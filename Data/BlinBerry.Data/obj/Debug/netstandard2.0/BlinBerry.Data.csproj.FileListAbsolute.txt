@@ -1,0 +1,16 @@
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\BlinBerry.Data.deps.json
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\BlinBerry.Data.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\BlinBerry.Data.pdb
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\BlinBerry.Data.Common.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\BlinBerry.Data.Models.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\GlobalContants.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\GlobalContants.pdb
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\BlinBerry.Data.Models.pdb
+D:\Projects\BlinBerry\Data\BlinBerry.Data\bin\Debug\netstandard2.0\BlinBerry.Data.Common.pdb
+D:\Projects\BlinBerry\Data\BlinBerry.Data\obj\Debug\netstandard2.0\BlinBerry.Data.csprojAssemblyReference.cache
+D:\Projects\BlinBerry\Data\BlinBerry.Data\obj\Debug\netstandard2.0\BlinBerry.Data.csproj.CoreCompileInputs.cache
+D:\Projects\BlinBerry\Data\BlinBerry.Data\obj\Debug\netstandard2.0\BlinBerry.Data.AssemblyInfoInputs.cache
+D:\Projects\BlinBerry\Data\BlinBerry.Data\obj\Debug\netstandard2.0\BlinBerry.Data.AssemblyInfo.cs
+D:\Projects\BlinBerry\Data\BlinBerry.Data\obj\Debug\netstandard2.0\BlinBerry.Data.csproj.CopyComplete
+D:\Projects\BlinBerry\Data\BlinBerry.Data\obj\Debug\netstandard2.0\BlinBerry.Data.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data\obj\Debug\netstandard2.0\BlinBerry.Data.pdb

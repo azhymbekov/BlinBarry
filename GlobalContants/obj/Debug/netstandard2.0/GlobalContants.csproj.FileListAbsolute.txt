@@ -1,0 +1,8 @@
+D:\Projects\BlinBerry\GlobalContants\bin\Debug\netstandard2.0\GlobalContants.deps.json
+D:\Projects\BlinBerry\GlobalContants\bin\Debug\netstandard2.0\GlobalContants.dll
+D:\Projects\BlinBerry\GlobalContants\bin\Debug\netstandard2.0\GlobalContants.pdb
+D:\Projects\BlinBerry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.csproj.CoreCompileInputs.cache
+D:\Projects\BlinBerry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.AssemblyInfoInputs.cache
+D:\Projects\BlinBerry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.AssemblyInfo.cs
+D:\Projects\BlinBerry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.dll
+D:\Projects\BlinBerry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.pdb

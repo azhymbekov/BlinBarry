@@ -1,0 +1,12 @@
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\BlinBerry.Services.Common.deps.json
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\BlinBerry.Services.Common.dll
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\BlinBerry.Services.Common.pdb
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\GlobalContants.dll
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\GlobalContants.pdb
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.csprojAssemblyReference.cache
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.csproj.CoreCompileInputs.cache
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.AssemblyInfoInputs.cache
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.AssemblyInfo.cs
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.csproj.CopyComplete
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.dll
+D:\Projects\BlinBerry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.pdb

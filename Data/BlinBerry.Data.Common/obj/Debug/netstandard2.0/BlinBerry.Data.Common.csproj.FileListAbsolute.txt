@@ -1,0 +1,12 @@
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\bin\Debug\netstandard2.0\BlinBerry.Data.Common.deps.json
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\bin\Debug\netstandard2.0\BlinBerry.Data.Common.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\bin\Debug\netstandard2.0\BlinBerry.Data.Common.pdb
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\obj\Debug\netstandard2.0\BlinBerry.Data.Common.csprojAssemblyReference.cache
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\obj\Debug\netstandard2.0\BlinBerry.Data.Common.csproj.CoreCompileInputs.cache
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\obj\Debug\netstandard2.0\BlinBerry.Data.Common.AssemblyInfoInputs.cache
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\obj\Debug\netstandard2.0\BlinBerry.Data.Common.AssemblyInfo.cs
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\obj\Debug\netstandard2.0\BlinBerry.Data.Common.csproj.CopyComplete
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\obj\Debug\netstandard2.0\BlinBerry.Data.Common.dll
+D:\Projects\BlinBerry\Data\BlinBerry.Data.Common\obj\Debug\netstandard2.0\BlinBerry.Data.Common.pdb
