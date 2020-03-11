@@ -1,0 +1,87 @@
+﻿@model BlinBerry.Services.Common.SpendingService.Models.SpendingDto
+
+<form asp-action="SaveData">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <input asp-for="@Model.Id" type="hidden" />
+        <div class="col-md-4">
+            <div class="form-group">
+                <label style="text-align: center; font-size: larger; font-weight: bold; color: orangered">Создание расхода</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Money" class="control-label">Сумма</label>
+                <input asp-for="Money" type="number" class="form-control" />
+                <span asp-validation-for="Money" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label">Дата</label>
+                <input asp-for="Date" type="date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment" class="control-label">Причина</label>
+                <textarea asp-for="Comment" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3" id="products" style="display: none" >
+            <div class="form-group">
+                <label style="text-align: center; font-size: larger; font-weight: bold; color: orangered">Количество продукции</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Eggs" class="control-label">Яйцо (штук)</label>
+                <input asp-for="Eggs" value="0" type="number" class="form-control" />
+                <span asp-validation-for="Eggs" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Kefir" class="control-label">Кефир (литров)</label>
+                <input asp-for="Kefir" value="0" type="number" class="form-control" />
+                <span asp-validation-for="Kefir" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Oil" class="control-label">Масло (литров)</label>
+                <input asp-for="Oil" value="0" type="number" class="form-control" />
+                <span asp-validation-for="Oil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vanila" class="control-label">Ванильный сахар (грамм)</label>
+                <input asp-for="Vanila" value="0" class="form-control" />
+                <span asp-validation-for="Vanila" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sugar" class="control-label">Сахар (кг)</label>
+                <input asp-for="Sugar" value="0" class="form-control" />
+                <span asp-validation-for="Sugar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salt" class="control-label">Соль (кг)</label>
+                <input asp-for="Salt" value="0" class="form-control" />
+                <span asp-validation-for="Salt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Soda" class="control-label">Сода (кг)</label>
+                <input asp-for="Soda" value="0" class="form-control" />
+                <span asp-validation-for="Soda" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <input onclick="haveProductSpend()" type="button" value="Списание" class="btn btn-primary" style="background-color: rebeccapurple" />
+
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
+
+    </div>
+</form>
+
+<script>
+
+    function haveProductSpend() {
+        console.log("dddd");
+        $("#products").show();
+    }
+</script>

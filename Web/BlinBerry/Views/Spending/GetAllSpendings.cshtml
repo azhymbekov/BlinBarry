@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BlinBerry.Services.Common.SpendingService.Models.SpendingDto>
+
+
+<h1>Список затрат</h1>
+
+<p>
+    <a asp-action="SaveData">Довавить новый расход </a>
+</p>
+<table class="table">
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span style="color: blueviolet;">
+                      
+                    @Html.DisplayFor(modelItem => item.Date)
+                </span>
+
+                <br />
+                <span style="font-size: xx-small">  сумма : @item.Money</span>
+            </td>
+
+            <td>
+                @Html.ActionLink("Редактировать", "SaveData", new { Id = item.Id }) 
+            </td>
+            
+            <td>
+                @Html.ActionLink("Детали", "Details", new { Id = item.Id }) 
+            </td>
+            
+        </tr>
+    }
+    </tbody>
+</table>

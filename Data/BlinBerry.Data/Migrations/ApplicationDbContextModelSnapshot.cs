@@ -44,7 +44,7 @@ namespace BlinBerry.Data.Migrations
 
                     b.Property<double>("Sugar");
 
-                    b.Property<double>("TotalCash");
+                    b.Property<double?>("TotalCash");
 
                     b.Property<double>("Vanila");
 
@@ -62,13 +62,23 @@ namespace BlinBerry.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<Guid>("BlinBerryId");
+
+                    b.Property<string>("BuyersName");
+
+                    b.Property<string>("Comment");
+
                     b.Property<Guid?>("CreatedById");
 
                     b.Property<DateTime>("CreatedOn");
 
                     b.Property<double>("Eggs");
 
+                    b.Property<double>("EggsPrice");
+
                     b.Property<double>("Kefir");
+
+                    b.Property<double>("KefirPrice");
 
                     b.Property<Guid?>("ModifiedById");
 
@@ -76,15 +86,29 @@ namespace BlinBerry.Data.Migrations
 
                     b.Property<double>("Oil");
 
+                    b.Property<double>("OilPrice");
+
+                    b.Property<DateTime>("ProcurementsDay");
+
                     b.Property<double>("Salt");
+
+                    b.Property<double>("SaltPrice");
 
                     b.Property<double>("Soda");
 
+                    b.Property<double>("SodaPrice");
+
                     b.Property<double>("Sugar");
+
+                    b.Property<double>("SugarPrice");
 
                     b.Property<double>("Vanila");
 
+                    b.Property<double>("VanilaPrice");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("BlinBerryId");
 
                     b.HasIndex("CreatedById");
 
@@ -346,6 +370,11 @@ namespace BlinBerry.Data.Migrations
 
             modelBuilder.Entity("BlinBerry.Data.Models.Entities.ProductProcurement", b =>
                 {
+                    b.HasOne("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", "BlinBerry")
+                        .WithMany("Transactions")
+                        .HasForeignKey("BlinBerryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");

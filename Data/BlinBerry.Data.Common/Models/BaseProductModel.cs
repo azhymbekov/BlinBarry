@@ -14,5 +14,6 @@ namespace BlinBerry.Data.Common.Models
         public double Sugar { get; set; }
         public double Oil { get; set; }
         public double Soda { get; set; }
+
     }
 }

@@ -1,11 +1,20 @@
-﻿using BlinBerry.Data;
+﻿using AutoMapper;
+using BlinBerry.Data;
 using BlinBerry.Data.Models.IdentityModels;
 using BlinBerry.Data.Repositories;
 using BlinBerry.Data.Seedeng;
 using BlinBerry.Service.AccountServise;
+using BlinBerry.Service.CashAndProducts;
+using BlinBerry.Service.MapperProfile;
+using BlinBerry.Service.ProcurementService;
 using BlinBerry.Service.SelesReportService;
+using BlinBerry.Service.SpendingService;
 using BlinBerry.Services.Common.AccountService;
+using BlinBerry.Services.Common.CommonInfoService;
+using BlinBerry.Services.Common.CommonInfoService.Models;
+using BlinBerry.Services.Common.ProcurementService;
 using BlinBerry.Services.Common.SelesReport;
+using BlinBerry.Services.Common.SpendingService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -49,6 +58,7 @@ namespace BlinBerry
              .AddEntityFrameworkStores<ApplicationDbContext>()
              .AddDefaultTokenProviders();
 
+            services.AddAutoMapper(typeof(MapperProfile));
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -62,6 +72,9 @@ namespace BlinBerry
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddTransient<ISelesReportService, SelesReportService>();
+            services.AddTransient<ICommonInfoAboutAccountService, CommonAccountService>();
+            services.AddTransient<IProcurementService, ProcurementService>();
+            services.AddTransient<ISpendingService, SpendingService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

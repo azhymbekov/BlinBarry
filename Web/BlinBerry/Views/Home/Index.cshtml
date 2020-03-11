@@ -1,12 +1,34 @@
-﻿@model BlinBerry.Data.Models.Entities.CommonMoneyAndProducts
+﻿@model BlinBerry.Services.Common.CommonInfoService.Models.CommonInfoDto
 
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4"></h1>
-    <p>Войдите в ситему  <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Войти</a> </p>
+<h2 style="text-align: center">Информация</h2>
 
-</div>
+<br/>
+
+@if (User.Identity.IsAuthenticated)
+{
+<ul class="list-group" style="text-align: center">
+    <li class="list-group-item active">Касса : @Model.TotalCash сом</li>
+    <li class="list-group-item">Кефир : @Model.Kefir литров</li>
+    <li class="list-group-item">Яйцо : @Model.Eggs штук</li>
+    <li class="list-group-item">Масло : @Model.Oil литров</li>
+    <li class="list-group-item">Соль : @Model.Salt кг</li>
+    <li class="list-group-item">Сода : @Model.Soda грамм</li>
+    <li class="list-group-item">Сахар : @Model.Sugar кг</li>
+    <li class="list-group-item">Ванильный сахар : @Model.Vanila грамм</li>
+    <li class="list-group-item">Дата обновления : @Model.ModifiedOn</li>
+</ul>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4"></h1>
+        <p>Войдите в ситему  <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Войти</a> </p>
+
+    </div>
+}
+

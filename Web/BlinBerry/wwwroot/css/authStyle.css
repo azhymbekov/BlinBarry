@@ -1,0 +1,91 @@
+﻿html,
+body,
+header,
+.view {
+    height: 100vh;
+}
+
+[type=checkbox]:checked + label:before {
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+@media (max-width: 740px) {
+    html,
+    body,
+    header,
+    .view {
+        height: 815px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    html,
+    body,
+    header,
+    .view {
+        height: 650px;
+    }
+}
+
+.intro-2 {
+    background-color: #9DA092;
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.top-nav-collapse {
+    background-color: #3f51b5 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+}
+
+@media (max-width: 768px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #3f51b5 !important;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #3f51b5 !important;
+    }
+}
+
+.card {
+    background-color: rgba(229, 228, 255, 0.2);
+}
+
+.md-form label {
+    color: #ffffff;
+}
+
+h6 {
+    line-height: 1.7;
+}
+
+
+.card {
+    margin-top: 30px;
+    /*margin-bottom: -45px;*/
+}
+
+.md-form .form-control {
+    color: #fff;
+}
+
+.validation-summary-errors ul {
+    list-style-type: none;
+    font-size: 14px;
+    color: red;
+}
+
+.field-validation-error {
+    color: red;
+}

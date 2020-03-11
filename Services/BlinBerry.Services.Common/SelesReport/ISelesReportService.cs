@@ -10,7 +10,6 @@ namespace BlinBerry.Services.Common.SelesReport
 {
     public interface ISelesReportService
     {
-        Task<SelesReportDto> GetReportAsync();
 
         IQueryable<SelesReportDto> GetReportsList();
 

@@ -1,0 +1,27 @@
+﻿@model BlinBerry.Services.Common.SelesReport.Models.SelesReportDto
+
+<h1>Детали закупки</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Имя закупщика
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CountOfKg)
+        </dd>
+        <dt class="col-sm-2">
+            Дата закупки
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DefectiveKg)
+        </dd>
+        <dt class="col-sm-2">
+            Комментарий
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DayOfWeek)
+        </dd>
+    </dl>
+</div>

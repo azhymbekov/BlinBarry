@@ -13,21 +13,31 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <span style="color: blueviolet;">
-                      
-                        @Html.DisplayFor(modelItem => item.DayOfWeek)
-                    </span>
+        <tr>
+            <td>
+                <span style="color: blueviolet;">
 
-                    <br />
-                    <span style="font-size: x-small">  Продано кг : @item.CountOfKg</span>
-                </td>
+                    @Html.DisplayFor(modelItem => item.DayOfWeek)
+                </span>
 
-                <td>
-                    @Html.ActionLink("Редактировать", "Create", new { wordId = item.Id }) 
-                </td>
-            </tr>
+                <br />
+                <span style="font-size: x-small">  Продано кг : @item.CountOfKg</span>
+            </td>
+
+            <td>
+                <span style="color: blueviolet;">
+
+                  Количество браков :   @Html.DisplayFor(modelItem => item.DefectiveKg) 
+                </span>
+
+                <br />
+                <span style="font-size: x-small">  Выручка за день : @item.Cash</span>
+            </td>
+
+            <td>
+                @Html.ActionLink("Редактировать", "CreateNewReportAsync", new { seleId = item.Id })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

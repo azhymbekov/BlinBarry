@@ -8,6 +8,8 @@ namespace BlinBerry.Data.Models.Entities
 {
     public class CommonMoneyAndProducts : BaseProdusctModel<Guid, ApplicationUser>
     {
-        public double TotalCash { get; set; }
+        public double? TotalCash { get; set; }
+
+        public virtual ICollection<ProductProcurement> Transactions { get; set; }
     }
 }

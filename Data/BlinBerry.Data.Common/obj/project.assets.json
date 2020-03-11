@@ -179,27 +179,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Отец\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\sibers-net\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\BlinBerry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
+      "projectUniqueName": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
       "projectName": "BlinBerry.Data.Common",
-      "projectPath": "D:\\Projects\\BlinBerry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
-      "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\BlinBerry\\Data\\BlinBerry.Data.Common\\obj\\",
+      "projectPath": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
+      "packagesPath": "C:\\Users\\sibers-net\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Отец\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\sibers-net\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

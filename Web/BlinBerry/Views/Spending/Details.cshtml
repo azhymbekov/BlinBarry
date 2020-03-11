@@ -1,0 +1,79 @@
+﻿@model BlinBerry.Services.Common.SpendingService.Models.SpendingDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали расхода</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Сумма
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Money)
+        </dd>
+        <dt class="col-sm-2">
+            Дата
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            Комментарий
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Списанные продукты продукты</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Кефир (литров)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Kefir) 
+        </dd>
+        <dt class="col-sm-2">
+            Яйцо (штук)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Eggs) &nbsp &nbsp </dd>
+        <dt class="col-sm-2">
+            Масло (литров)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Oil) &nbsp &nbsp
+             </dd>
+        <dt class="col-sm-2">
+            Ванильный c (гр)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vanila) &nbsp &nbsp
+               </dd>
+        <dt class="col-sm-2">
+            Сахар (кг)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sugar) &nbsp &nbsp</dd>
+        <dt class="col-sm-2">
+            Соль (кг)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Salt) &nbsp &nbsp</dd>
+        <dt class="col-sm-2">
+            Сода (кг)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Soda) &nbsp &nbsp</dd>
+    </dl>
+
+
+
+</div>

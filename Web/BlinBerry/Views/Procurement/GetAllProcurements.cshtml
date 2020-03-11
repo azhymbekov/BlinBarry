@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BlinBerry.Services.Common.ProcurementService.Models.ProcurementDto>
+
+
+<h1>Список закупок</h1>
+
+<p>
+    <a asp-action="SaveData">Добавить закупку</a>
+</p>
+<table class="table">
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span style="color: blueviolet;">
+                      
+                    @Html.DisplayFor(modelItem => item.ProcurementsDay)
+                </span>
+
+                <br />
+                <span style="font-size: xx-small">  Закупал : @item.BuyersName</span>
+            </td>
+
+            <td>
+                @Html.ActionLink("Редактировать", "SaveData", new { procId = item.Id }) 
+            </td>
+            <td>
+                @Html.ActionLink("Детали", "Details", new { procId = item.Id }) 
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

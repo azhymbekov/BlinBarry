@@ -195,27 +195,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Отец\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\sibers-net\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\BlinBerry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
+      "projectUniqueName": "D:\\Projects\\Github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
       "projectName": "BlinBerry.Services.Common",
-      "projectPath": "D:\\Projects\\BlinBerry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
-      "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\BlinBerry\\Services\\BlinBerry.Services.Common\\obj\\",
+      "projectPath": "D:\\Projects\\Github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
+      "packagesPath": "C:\\Users\\sibers-net\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Github\\BlinBarry\\Services\\BlinBerry.Services.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Отец\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\sibers-net\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -227,8 +224,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\Projects\\BlinBerry\\GlobalContants\\GlobalContants.csproj": {
-              "projectPath": "D:\\Projects\\BlinBerry\\GlobalContants\\GlobalContants.csproj"
+            "D:\\Projects\\Github\\BlinBarry\\GlobalContants\\GlobalContants.csproj": {
+              "projectPath": "D:\\Projects\\Github\\BlinBarry\\GlobalContants\\GlobalContants.csproj"
             }
           }
         }

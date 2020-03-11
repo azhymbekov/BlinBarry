@@ -25,11 +25,6 @@ namespace BlinBerry.Service.SelesReportService
             this.accountRepository = accountRepository;
         }
 
-        public Task<SelesReportDto> GetReportAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public IQueryable<SelesReportDto> GetReportsList()
         {
             return from r in reportRepository.All()
@@ -39,13 +34,22 @@ namespace BlinBerry.Service.SelesReportService
                        CountOfKg = r.CountOfKg ,
                        DayOfWeek = r.DayOfWeek,
                        DefectiveKg = r.DefectiveKg,
-                       
+                       Cash = r.CountOfKg*170
                    };
         }
 
-        public Task<SelesReportDto> PrepeareWordForEditView(Guid? id)
+        public async Task<SelesReportDto> PrepeareWordForEditView(Guid? id)
         {
-            throw new NotImplementedException();
+            var report = (from w in reportRepository.AllAsNoTracking()
+                        where w.Id == id
+                        select new SelesReportDto()
+                        {
+                            Id = w.Id,
+                            CountOfKg = w.CountOfKg,
+                            DayOfWeek = w.DayOfWeek,
+                            DefectiveKg = w.DefectiveKg
+                        }).FirstOrDefault();
+            return report;
         }
 
         public Task RemoveAsync(Guid id)

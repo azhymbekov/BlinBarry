@@ -179,27 +179,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Отец\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\sibers-net\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\BlinBerry\\GlobalContants\\GlobalContants.csproj",
+      "projectUniqueName": "D:\\Projects\\Github\\BlinBarry\\GlobalContants\\GlobalContants.csproj",
       "projectName": "GlobalContants",
-      "projectPath": "D:\\Projects\\BlinBerry\\GlobalContants\\GlobalContants.csproj",
-      "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\BlinBerry\\GlobalContants\\obj\\",
+      "projectPath": "D:\\Projects\\Github\\BlinBarry\\GlobalContants\\GlobalContants.csproj",
+      "packagesPath": "C:\\Users\\sibers-net\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\Github\\BlinBarry\\GlobalContants\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Отец\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\sibers-net\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

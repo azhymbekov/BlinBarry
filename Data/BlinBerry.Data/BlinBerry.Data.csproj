@@ -9,6 +9,12 @@
     <Compile Remove="Migrations\20200308092242_InitialCreate.cs" />
     <Compile Remove="Migrations\20200308122615_InitialCreate.cs" />
     <Compile Remove="Migrations\20200308131025_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200308141131_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200310093616_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200310123943_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200310125214_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200310125503_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200311103540_InitialCreate.cs" />
   </ItemGroup>
 
   <ItemGroup>

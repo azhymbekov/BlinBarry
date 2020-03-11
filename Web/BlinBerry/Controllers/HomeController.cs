@@ -5,20 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BlinBerry.Models;
+using BlinBerry.Services.Common.CommonInfoService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BlinBerry.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+
+        private readonly ICommonInfoAboutAccountService infoService;
+
+        public HomeController(ICommonInfoAboutAccountService infoService)
         {
-            return View();
+            this.infoService = infoService;
         }
 
-        public IActionResult Privacy()
+        public double? GetAccountInfo()
         {
-            return View();
+            return infoService.GetAccountInfo();
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var info = await infoService.GetCommonInfo();
+            return this.View(info);
+        }
+       
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,0 +1,93 @@
+﻿@model BlinBerry.Services.Common.ProcurementService.Models.ProcurementDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали закупки</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Имя закупщика
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BuyersName)
+        </dd>
+        <dt class="col-sm-2">
+            Дата закупки
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProcurementsDay)
+        </dd>
+        <dt class="col-sm-2">
+            Комментарий
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Закупленные продукты</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Кефир (литров)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Kefir) &nbsp &nbsp
+            | <span style="font-size: xx-small;color: blueviolet"> цена  :  @Html.DisplayFor(model => model.KefirPrice)</span>
+        </dd>
+        <dt class="col-sm-2">
+            Яйцо (штук)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Eggs) &nbsp &nbsp
+            | <span style="font-size: xx-small;color: blueviolet"> цена  :  @Html.DisplayFor(model => model.EggsPrice)</span>
+        </dd>
+        <dt class="col-sm-2">
+            Масло (литров)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Oil) &nbsp &nbsp
+            | <span style="font-size: xx-small;color: blueviolet"> цена  :  @Html.DisplayFor(model => model.OilPrice)</span>
+        </dd>
+        <dt class="col-sm-2">
+            Ванильный c (гр)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vanila) &nbsp &nbsp
+            | <span style="font-size: xx-small;color: blueviolet"> цена  :  @Html.DisplayFor(model => model.VanilaPrice)</span>
+        </dd>
+        <dt class="col-sm-2">
+            Сахар (кг)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sugar) &nbsp &nbsp
+            | <span style="font-size: xx-small;color: blueviolet"> цена  :  @Html.DisplayFor(model => model.SugarPrice)</span>
+        </dd>
+        <dt class="col-sm-2">
+            Соль (кг)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Salt) &nbsp &nbsp
+            | <span style="font-size: xx-small;color: blueviolet"> цена  :  @Html.DisplayFor(model => model.SaltPrice)</span>
+        </dd>
+        <dt class="col-sm-2">
+            Сода (кг)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Soda) &nbsp &nbsp
+            | <span style="font-size: xx-small;color: blueviolet"> цена  :  @Html.DisplayFor(model => model.SodaPrice)</span>
+        </dd>
+    </dl>
+   
+ 
+
+</div>
+<div>
+    <a asp-action="GetAllProcurements">Back to List</a>
+</div>

@@ -86,7 +86,7 @@ namespace BlinBerry.Data.Migrations
                     Sugar = table.Column<double>(nullable: false),
                     Oil = table.Column<double>(nullable: false),
                     Soda = table.Column<double>(nullable: false),
-                    TotalCash = table.Column<double>(nullable: false)
+                    TotalCash = table.Column<double>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -212,40 +212,6 @@ namespace BlinBerry.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductProcurements",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreatedById = table.Column<Guid>(nullable: true),
-                    ModifiedById = table.Column<Guid>(nullable: true),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    Kefir = table.Column<double>(nullable: false),
-                    Eggs = table.Column<double>(nullable: false),
-                    Vanila = table.Column<double>(nullable: false),
-                    Salt = table.Column<double>(nullable: false),
-                    Sugar = table.Column<double>(nullable: false),
-                    Oil = table.Column<double>(nullable: false),
-                    Soda = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductProcurements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductProcurements_AspNetUsers_CreatedById",
-                        column: x => x.CreatedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ProductProcurements_AspNetUsers_ModifiedById",
-                        column: x => x.ModifiedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "SelesReports",
                 columns: table => new
                 {
@@ -306,6 +272,57 @@ namespace BlinBerry.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Spendings_AspNetUsers_ModifiedById",
+                        column: x => x.ModifiedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductProcurements",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CreatedById = table.Column<Guid>(nullable: true),
+                    ModifiedById = table.Column<Guid>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    Kefir = table.Column<double>(nullable: false),
+                    Eggs = table.Column<double>(nullable: false),
+                    Vanila = table.Column<double>(nullable: false),
+                    Salt = table.Column<double>(nullable: false),
+                    Sugar = table.Column<double>(nullable: false),
+                    Oil = table.Column<double>(nullable: false),
+                    Soda = table.Column<double>(nullable: false),
+                    BuyersName = table.Column<string>(nullable: true),
+                    ProcurementsDay = table.Column<DateTime>(nullable: false),
+                    Comment = table.Column<string>(nullable: true),
+                    BlinBerryId = table.Column<Guid>(nullable: false),
+                    KefirPrice = table.Column<double>(nullable: false),
+                    EggsPrice = table.Column<double>(nullable: false),
+                    VanilaPrice = table.Column<double>(nullable: false),
+                    SaltPrice = table.Column<double>(nullable: false),
+                    SugarPrice = table.Column<double>(nullable: false),
+                    OilPrice = table.Column<double>(nullable: false),
+                    SodaPrice = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductProcurements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductProcurements_Account_BlinBerryId",
+                        column: x => x.BlinBerryId,
+                        principalTable: "Account",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductProcurements_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProductProcurements_AspNetUsers_ModifiedById",
                         column: x => x.ModifiedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -377,6 +394,11 @@ namespace BlinBerry.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductProcurements_BlinBerryId",
+                table: "ProductProcurements",
+                column: "BlinBerryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductProcurements_CreatedById",
                 table: "ProductProcurements",
                 column: "CreatedById");
@@ -413,9 +435,6 @@ namespace BlinBerry.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Account");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -443,9 +462,11 @@ namespace BlinBerry.Data.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Account");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
         }
-
         private void FillDefaultRoles(MigrationBuilder migrationBuilder)
         {
             var roles = new List<string>

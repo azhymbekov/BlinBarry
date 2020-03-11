@@ -28,11 +28,11 @@ namespace BlinBerry.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> CreateNewReportAsync(Guid? wordId)
+        public async Task<IActionResult> CreateNewReportAsync(Guid? seleId)
         {
-            if (wordId.HasValue)
+            if (seleId.HasValue)
             {
-                var userModel = await selesReportService.PrepeareWordForEditView(wordId);
+                var userModel = await selesReportService.PrepeareWordForEditView(seleId);
                 ViewBag.IsForEdit = true;
                 return this.View(userModel);
             }
@@ -44,8 +44,9 @@ namespace BlinBerry.Controllers
         public async Task<IActionResult> CreateNewReportAsync(SelesReportDto model)
         {
             await selesReportService.SaveAsync(model, this.User.GetUserId());
-
             return RedirectToAction("Index", "SelesReport");
         }
+
+
     }
 }

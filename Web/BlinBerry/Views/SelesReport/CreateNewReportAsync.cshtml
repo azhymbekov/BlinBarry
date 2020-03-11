@@ -1,24 +1,24 @@
 ﻿@model BlinBerry.Services.Common.SelesReport.Models.SelesReportDto
 
-<form asp-action="Create">
+<form asp-action="CreateNewReportAsync">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row">
-        <input asp-for="@Model.Id" type="hidden" />
+        <input asp-for="@Model.Id" type="hidden"/>
         <div class="col-md-4">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
                 <label asp-for="CountOfKg" class="control-label">Продано кг</label>
-                <input asp-for="CountOfKg" class="form-control" />
+                <input asp-for="CountOfKg" class="form-control"/>
                 <span asp-validation-for="CountOfKg" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DefectiveKg" control-label">Браков кг</label>
-                <input asp-for="DefectiveKg" class="form-control" />
+                <label asp-for="DefectiveKg" class="control-label">Браков кг</label>
+                <input asp-for="DefectiveKg" class="form-control"/>
                 <span asp-validation-for="DefectiveKg" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DayOfWeek" class="control-label">Дата</label>
-                <input asp-for="DayOfWeek" class="form-control" />
+                <input asp-for="DayOfWeek" type="date" class="form-control"/>
                 <span asp-validation-for="DayOfWeek" class="text-danger"></span>
             </div>
         </div>
