@@ -39,21 +39,26 @@ namespace BlinBerry.Service.ProcurementService
             return products.Select(x => mapper.Map<ProcurementDto>(x));
         }
 
-        public Task RemoveAsync(Guid id)
+        public async Task RemoveAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var procurement = await procurementRepository.GetByIdAsync(id);
+            var accountInfo = await accountRepository.GetByAsync(x => x.Id == procurement.BlinBerryId);
+            procurementRepository.Delete(procurement);
+            accountRepository.Delete(accountInfo);
+            await procurementRepository.SaveChangesAsync();
         }
 
         public async Task<OperationResult> SaveAsync(ProcurementDto model, Guid userId)
         {
             var result = new OperationResult();
             var procurement = await procurementRepository.All().FirstOrDefaultAsync(x => x.Id == model.Id);
-            var commonAccount = await accountRepository.All().OrderByDescending(x=>x.CreatedOn).FirstOrDefaultAsync();
+            
 
             try
             {
                 if (procurement == null)
                 {
+                    var commonAccount = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
                     var newProc = mapper.Map<ProductProcurement>(model);
                     var newTransaction = new CommonMoneyAndProducts()
                     {
@@ -76,20 +81,20 @@ namespace BlinBerry.Service.ProcurementService
                 {
                     var account = await accountRepository.All().FirstOrDefaultAsync(x => x.Id == procurement.BlinBerryId);
 
-                    var updatedProcurement = mapper.Map(model , procurement);
+                    var previousAccount = accountRepository.All().OrderByDescending(x => x.CreatedOn).Skip(1).First();
 
-                    account.TotalCash -=  model.TotalSum;
+                    account.TotalCash = previousAccount.TotalCash -  model.TotalSum;
 
-                    account.Kefir = model.Kefir; //литр
-                    account.Oil = model.Oil; // литр
-                    account.Salt = model.Salt; // кг
-                    account.Eggs = model.Eggs; // штук
-                    account.Vanila = model.Vanila; // грамм
-                    account.Sugar = model.Sugar; // кг
-                    account.Soda = model.Soda; //грамм
+                    account.Kefir = previousAccount.Kefir + model.Kefir; //литр
+                    account.Oil = previousAccount.Oil + model.Oil; // литр
+                    account.Salt = previousAccount.Salt + model.Salt; // кг
+                    account.Eggs = previousAccount.Eggs + model.Eggs; // штук
+                    account.Vanila = previousAccount.Vanila + model.Vanila; // грамм
+                    account.Sugar = previousAccount.Sugar + model.Sugar; // кг
+                    account.Soda = previousAccount.Soda + model.Soda; //грамм
 
-                    commonAccount.TotalCash -= model.TotalSum;
-                    
+                    mapper.Map(model, procurement);
+
                 }
                 await procurementRepository.SaveChangesAsync(userId);
             }

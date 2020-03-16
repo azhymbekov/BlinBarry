@@ -27,7 +27,7 @@ namespace BlinBerry.Service.SelesReportService
 
         public IQueryable<SelesReportDto> GetReportsList()
         {
-            return from r in reportRepository.All()
+            return from r in reportRepository.All().OrderByDescending(x => x.DayOfWeek)
                    select new SelesReportDto
                    {
                        Id = r.Id,
@@ -62,39 +62,66 @@ namespace BlinBerry.Service.SelesReportService
             var result = new OperationResult();
 
             var report = await reportRepository.All().FirstOrDefaultAsync(x => x.Id == model.Id);
-
-            var account = await accountRepository.All().FirstOrDefaultAsync();
-
-            if (report == null)
+            try
             {
-                var newReport = new SelesReport
+                if (report == null)
                 {
-                    Id = Guid.NewGuid(),
-                    CountOfKg = model.CountOfKg,
-                    DefectiveKg = model.DefectiveKg,
-                    DayOfWeek = model.DayOfWeek
-                };
-                reportRepository.Add(newReport);
-            }            
-                        
-            else
-            {
-                report.DayOfWeek = model.DayOfWeek;
-                report.CountOfKg = model.CountOfKg;
-                report.DefectiveKg = model.DefectiveKg;
+                    var currentAccount = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
+
+                    var newReport = new SelesReport
+                    {
+                        Id = Guid.NewGuid(),
+                        CountOfKg = model.CountOfKg,
+                        DefectiveKg = model.DefectiveKg,
+                        DayOfWeek = model.DayOfWeek
+                    };
+                    
+                    var newTransaction = new CommonMoneyAndProducts()
+                    {
+                        Id = Guid.NewGuid(),
+                        TotalCash = currentAccount.TotalCash + ((model.CountOfKg * 170) - (model.DefectiveKg * 170)),
+                        Kefir = currentAccount.Kefir - model.TotalKg * 0.55, //литр
+                        Oil = currentAccount.Oil - model.TotalKg * 0.074, // литр
+                        Salt = currentAccount.Salt - model.TotalKg * 0.0022, // кг
+                        Eggs = currentAccount.Eggs - model.TotalKg * 5, // штук
+                        Vanila = currentAccount.Vanila - model.TotalKg * 5.3, // грамм
+                        Sugar = currentAccount.Sugar - model.TotalKg * 0.06, // кг
+                        Soda = currentAccount.Soda - model.TotalKg * 0.16, //грамм
+                    };
+
+                    newReport.BlinBerryId = newTransaction.Id;
+                    reportRepository.Add(newReport);
+                    accountRepository.Add(newTransaction);
+                }
+
+                else
+                {
+                    var editedAccount = await accountRepository.All().FirstOrDefaultAsync(x => x.Id == report.BlinBerryId);
+
+                    var previousAccount = accountRepository.All().OrderByDescending(x => x.CreatedOn).Skip(1).First();
+                    
+                    editedAccount.TotalCash = previousAccount.TotalCash + ((model.CountOfKg * 170) - (model.DefectiveKg * 170));
+                    editedAccount.Kefir = previousAccount.Kefir - model.TotalKg * 0.55; //литр
+                    editedAccount.Oil = previousAccount.Oil - model.TotalKg * 0.074; // литр
+                    editedAccount.Salt = previousAccount.Salt - model.TotalKg * 0.0022; // кг
+                    editedAccount.Eggs = previousAccount.Eggs - model.TotalKg * 5; // штук
+                    editedAccount.Vanila = previousAccount.Vanila - model.TotalKg * 5.3; // грамм
+                    editedAccount.Sugar = previousAccount.Sugar - model.TotalKg * 0.06; // кг
+                    editedAccount.Soda = previousAccount.Soda - model.TotalKg * 0.16; //грамм
+
+                    report.DayOfWeek = model.DayOfWeek;
+                    report.CountOfKg = model.CountOfKg;
+                    report.DefectiveKg = model.DefectiveKg;
+                }
+
+                await reportRepository.SaveChangesAsync(userId);
             }
-
-            account.TotalCash = account.TotalCash + ((model.CountOfKg * 170) - (model.DefectiveKg * 170));
-            account.Kefir = account.Kefir - model.TotalKg * 0.55; //литр
-            account.Oil = account.Oil - model.TotalKg * 0.074; // литр
-            account.Salt = account.Salt -model.TotalKg * 0.0022; // кг
-            account.Eggs = account.Eggs - model.TotalKg * 5; // штук
-            account.Vanila = account.Vanila - model.TotalKg * 5.3; // грамм
-            account.Sugar = account.Sugar - model.TotalKg * 0.06; // кг
-            account.Soda = account.Soda - model.TotalKg * 0.16; //грамм
-
-            
-            await reportRepository.SaveChangesAsync(userId);
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
             return result;
         }
     }

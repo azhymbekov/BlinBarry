@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using AutoMapper;
 using BlinBerry.Data;
 using BlinBerry.Data.Models.IdentityModels;
 using BlinBerry.Data.Repositories;
@@ -19,6 +21,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,6 +41,20 @@ namespace BlinBerry
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.Configure<RequestLocalizationOptions>(
+            //    opts =>
+            //    {
+            //        var supportedCultures = new List<CultureInfo>
+            //        {
+            //            new CultureInfo("ky"),
+            //            new CultureInfo("ru"),
+            //        };
+
+            //        opts.DefaultRequestCulture = new RequestCulture("ru-RU");
+            //        opts.SupportedCultures = supportedCultures;
+            //        opts.SupportedUICultures = supportedCultures;
+            //    });
+
 
             services.AddDbContext<ApplicationDbContext>(
                options =>
@@ -82,6 +99,26 @@ namespace BlinBerry
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
+
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("en-GB"),
+                new CultureInfo("en"),
+                new CultureInfo("ru-RU"),
+                new CultureInfo("ru"),
+                new CultureInfo("de-DE"),
+                new CultureInfo("de")
+            };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("ru-RU"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

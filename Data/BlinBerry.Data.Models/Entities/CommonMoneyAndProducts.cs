@@ -10,6 +10,10 @@ namespace BlinBerry.Data.Models.Entities
     {
         public double? TotalCash { get; set; }
 
-        public virtual ICollection<ProductProcurement> Transactions { get; set; }
+        public virtual ICollection<ProductProcurement> Procurements { get; set; }
+
+        public virtual ICollection<SelesReport> Reports { get; set; }
+
+        public virtual ICollection<Spending> Spending { get; set; }
     }
 }

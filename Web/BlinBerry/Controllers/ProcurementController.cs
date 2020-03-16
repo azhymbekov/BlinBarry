@@ -54,5 +54,12 @@ namespace BlinBerry.Controllers
             var info = await procurementService.DetailsAsync(procId);
             return View(info);
         }
+
+        [Authorize]
+        public async Task<IActionResult> Delete(Guid procId)
+        {
+            await procurementService.RemoveAsync(procId);
+            return RedirectToAction("GetAllProcurements", "Procurement");
+        }
     }
 }

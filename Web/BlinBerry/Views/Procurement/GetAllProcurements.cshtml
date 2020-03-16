@@ -27,6 +27,9 @@
             <td>
                 @Html.ActionLink("Детали", "Details", new { procId = item.Id }) 
             </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", new { procId = item.Id }) 
+            </td>
         </tr>
     }
     </tbody>

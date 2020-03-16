@@ -13,5 +13,9 @@ namespace BlinBerry.Data.Models.Entities
         public string Comment { get; set; }
 
         public DateTime Date { get; set; }
+
+        public CommonMoneyAndProducts BlinBerry { get; set; }
+
+        public Guid BlinBerryId { get; set; }
     }
 }

@@ -12,7 +12,11 @@ namespace BlinBerry.Data.Models.Entities
 
         public DateTime DayOfWeek { get; set; }
 
-        public double DefectiveKg { get; set; }       
+        public double DefectiveKg { get; set; }
+
+        public CommonMoneyAndProducts BlinBerry { get; set; }
+
+        public Guid BlinBerryId { get; set; }
 
     }
 }

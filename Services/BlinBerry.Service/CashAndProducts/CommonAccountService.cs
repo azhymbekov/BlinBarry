@@ -30,7 +30,7 @@ namespace BlinBerry.Service.CashAndProducts
 
         public async Task<CommonInfoDto> GetCommonInfo()
         {
-            var info = await accountRepository.AllAsNoTracking().FirstOrDefaultAsync();
+            var info = await accountRepository.AllAsNoTracking().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
             return mapper.Map<CommonInfoDto>(info);
         }
     }

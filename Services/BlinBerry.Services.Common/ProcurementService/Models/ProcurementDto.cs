@@ -29,6 +29,7 @@ namespace BlinBerry.Services.Common.ProcurementService.Models
 
         public string ModifiedBy { get; set; }
 
+        [Required(ErrorMessage = "Укажите покупателя")]
         public string BuyersName { get; set; }
 
 

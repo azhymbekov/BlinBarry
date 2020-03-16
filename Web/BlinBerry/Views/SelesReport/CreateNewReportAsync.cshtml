@@ -3,29 +3,27 @@
 <form asp-action="CreateNewReportAsync">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row">
-        <input asp-for="@Model.Id" type="hidden"/>
+        <input asp-for="@Model.Id" type="hidden" />
         <div class="col-md-4">
 
             <div class="form-group">
                 <label asp-for="CountOfKg" class="control-label">Продано кг</label>
-                <input asp-for="CountOfKg" class="form-control"/>
+                <input asp-for="CountOfKg" class="form-control" />
                 <span asp-validation-for="CountOfKg" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DefectiveKg" class="control-label">Браков кг</label>
-                <input asp-for="DefectiveKg" class="form-control"/>
+                <input asp-for="DefectiveKg" class="form-control" />
                 <span asp-validation-for="DefectiveKg" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DayOfWeek" class="control-label">Дата</label>
-                <input asp-for="DayOfWeek" type="date" class="form-control"/>
+                <input asp-for="DayOfWeek" type="date" class="form-control" />
                 <span asp-validation-for="DayOfWeek" class="text-danger"></span>
             </div>
         </div>
     </div>
     <div class="form-group">
-        <input type="submit" value="Сохранить" class="btn btn-primary"/>
-
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
     </div>
 </form>
-

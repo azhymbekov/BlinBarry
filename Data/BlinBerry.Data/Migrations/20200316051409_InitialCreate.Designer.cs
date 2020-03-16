@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlinBerry.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200311124137_InitialCreate")]
+    [Migration("20200316051409_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,6 +124,8 @@ namespace BlinBerry.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<Guid>("BlinBerryId");
+
                     b.Property<double>("CountOfKg");
 
                     b.Property<Guid?>("CreatedById");
@@ -140,6 +142,8 @@ namespace BlinBerry.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BlinBerryId");
+
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("ModifiedById");
@@ -151,6 +155,8 @@ namespace BlinBerry.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("BlinBerryId");
 
                     b.Property<string>("Comment");
 
@@ -181,6 +187,8 @@ namespace BlinBerry.Data.Migrations
                     b.Property<double>("Vanila");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BlinBerryId");
 
                     b.HasIndex("CreatedById");
 
@@ -373,7 +381,7 @@ namespace BlinBerry.Data.Migrations
             modelBuilder.Entity("BlinBerry.Data.Models.Entities.ProductProcurement", b =>
                 {
                     b.HasOne("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", "BlinBerry")
-                        .WithMany("Transactions")
+                        .WithMany("Procurements")
                         .HasForeignKey("BlinBerryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -388,6 +396,11 @@ namespace BlinBerry.Data.Migrations
 
             modelBuilder.Entity("BlinBerry.Data.Models.Entities.SelesReport", b =>
                 {
+                    b.HasOne("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", "BlinBerry")
+                        .WithMany("Reports")
+                        .HasForeignKey("BlinBerryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
@@ -399,6 +412,11 @@ namespace BlinBerry.Data.Migrations
 
             modelBuilder.Entity("BlinBerry.Data.Models.Entities.Spending", b =>
                 {
+                    b.HasOne("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", "BlinBerry")
+                        .WithMany("Spending")
+                        .HasForeignKey("BlinBerryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");

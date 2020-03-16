@@ -212,73 +212,6 @@ namespace BlinBerry.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SelesReports",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreatedById = table.Column<Guid>(nullable: true),
-                    ModifiedById = table.Column<Guid>(nullable: true),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    CountOfKg = table.Column<double>(nullable: false),
-                    DayOfWeek = table.Column<DateTime>(nullable: false),
-                    DefectiveKg = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SelesReports", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SelesReports_AspNetUsers_CreatedById",
-                        column: x => x.CreatedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_SelesReports_AspNetUsers_ModifiedById",
-                        column: x => x.ModifiedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Spendings",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CreatedById = table.Column<Guid>(nullable: true),
-                    ModifiedById = table.Column<Guid>(nullable: true),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    Kefir = table.Column<double>(nullable: false),
-                    Eggs = table.Column<double>(nullable: false),
-                    Vanila = table.Column<double>(nullable: false),
-                    Salt = table.Column<double>(nullable: false),
-                    Sugar = table.Column<double>(nullable: false),
-                    Oil = table.Column<double>(nullable: false),
-                    Soda = table.Column<double>(nullable: false),
-                    Money = table.Column<double>(nullable: false),
-                    Comment = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Spendings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Spendings_AspNetUsers_CreatedById",
-                        column: x => x.CreatedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Spendings_AspNetUsers_ModifiedById",
-                        column: x => x.ModifiedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ProductProcurements",
                 columns: table => new
                 {
@@ -323,6 +256,87 @@ namespace BlinBerry.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ProductProcurements_AspNetUsers_ModifiedById",
+                        column: x => x.ModifiedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SelesReports",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CreatedById = table.Column<Guid>(nullable: true),
+                    ModifiedById = table.Column<Guid>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    CountOfKg = table.Column<double>(nullable: false),
+                    DayOfWeek = table.Column<DateTime>(nullable: false),
+                    DefectiveKg = table.Column<double>(nullable: false),
+                    BlinBerryId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SelesReports", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SelesReports_Account_BlinBerryId",
+                        column: x => x.BlinBerryId,
+                        principalTable: "Account",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SelesReports_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SelesReports_AspNetUsers_ModifiedById",
+                        column: x => x.ModifiedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Spendings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CreatedById = table.Column<Guid>(nullable: true),
+                    ModifiedById = table.Column<Guid>(nullable: true),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    Kefir = table.Column<double>(nullable: false),
+                    Eggs = table.Column<double>(nullable: false),
+                    Vanila = table.Column<double>(nullable: false),
+                    Salt = table.Column<double>(nullable: false),
+                    Sugar = table.Column<double>(nullable: false),
+                    Oil = table.Column<double>(nullable: false),
+                    Soda = table.Column<double>(nullable: false),
+                    Money = table.Column<double>(nullable: false),
+                    Comment = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    BlinBerryId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Spendings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Spendings_Account_BlinBerryId",
+                        column: x => x.BlinBerryId,
+                        principalTable: "Account",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Spendings_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Spendings_AspNetUsers_ModifiedById",
                         column: x => x.ModifiedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -409,6 +423,11 @@ namespace BlinBerry.Data.Migrations
                 column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SelesReports_BlinBerryId",
+                table: "SelesReports",
+                column: "BlinBerryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SelesReports_CreatedById",
                 table: "SelesReports",
                 column: "CreatedById");
@@ -417,6 +436,11 @@ namespace BlinBerry.Data.Migrations
                 name: "IX_SelesReports_ModifiedById",
                 table: "SelesReports",
                 column: "ModifiedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Spendings_BlinBerryId",
+                table: "Spendings",
+                column: "BlinBerryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Spendings_CreatedById",
@@ -429,6 +453,7 @@ namespace BlinBerry.Data.Migrations
                 column: "ModifiedById");
 
             FillDefaultAccount(migrationBuilder);
+
             FillDefaultRoles(migrationBuilder);
         }
 
@@ -467,6 +492,7 @@ namespace BlinBerry.Data.Migrations
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
         }
+
         private void FillDefaultRoles(MigrationBuilder migrationBuilder)
         {
             var roles = new List<string>
@@ -494,7 +520,7 @@ namespace BlinBerry.Data.Migrations
         {
             var tupleAccounts = new List<(Guid, double, double, double, double, double, double, double, double)>
             {
-                (Guid.NewGuid(), 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+                (Guid.NewGuid(), 0.0,0.0,0.0,0.0,0.0,0.0,0.0,1000.0)
             };
 
             foreach (var item in tupleAccounts)

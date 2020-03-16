@@ -41,30 +41,51 @@ namespace BlinBerry.Service.SpendingService
         {
             var result = new OperationResult();
 
-            var account = await accountRepository.All().FirstOrDefaultAsync();
+            //Last info about account 
             try
             {
                 var spending = await spendingRepository.All().FirstOrDefaultAsync(x => x.Id == model.Id);
 
                 if (spending == null)
                 {
+                    var account = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
                     var newSpec = mapper.Map<Spending>(model);
+
+                    var newTransaction = new CommonMoneyAndProducts()
+                    {
+                        Id = Guid.NewGuid(),
+                        TotalCash = account.TotalCash - model.Money,
+                        Kefir = account.Kefir - model.Kefir, //литр
+                        Oil = account.Oil - model.Oil, // литр
+                        Salt = account.Salt - model.Salt, // кг
+                        Eggs = account.Eggs - model.Eggs, // штук
+                        Vanila = account.Vanila - model.Vanila, // грамм
+                        Sugar = account.Sugar - model.Sugar, // кг
+                        Soda = account.Soda - model.Soda //грамм
+                    };
+
+                    newSpec.BlinBerryId = newTransaction.Id;
+                    
+                    accountRepository.Add(newTransaction);
+                    
                     spendingRepository.Add(newSpec);
                 }
                 else
                 {
+                    var currentAccount = await accountRepository.GetByAsync(x => x.Id == spending.BlinBerryId);
+                    var previousAccount = accountRepository.All().OrderByDescending(x => x.CreatedOn).Skip(1).First();
+
+                    currentAccount.TotalCash = previousAccount.TotalCash - model.Money;
+                    currentAccount.Kefir = previousAccount.Kefir - model.Kefir; //литр
+                    currentAccount.Oil = previousAccount.Oil - model.Oil; // литр
+                    currentAccount.Salt = previousAccount.Salt - model.Salt; // кг
+                    currentAccount.Eggs = previousAccount.Eggs - model.Eggs; // штук
+                    currentAccount.Vanila = previousAccount.Vanila - model.Vanila; // грамм
+                    currentAccount.Sugar = previousAccount.Sugar - model.Sugar; // кг
+                    currentAccount.Soda = previousAccount.Soda - model.Soda; //грамм
+
                     mapper.Map(spending, model);
                 }
-
-                account.TotalCash -= model.Money;
-
-                account.Kefir -= model.Kefir; //литр
-                account.Oil -= model.Oil; // литр
-                account.Salt -= model.Salt; // кг
-                account.Eggs -= model.Eggs; // штук
-                account.Vanila -= model.Vanila; // грамм
-                account.Sugar -= model.Sugar; // кг
-                account.Soda -= model.Soda; //грамм
 
                 await spendingRepository.SaveChangesAsync(userId);
             }
