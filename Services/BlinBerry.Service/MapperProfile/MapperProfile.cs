@@ -21,7 +21,7 @@ namespace BlinBerry.Service.MapperProfile
             CreateMap<ProductProcurement, ProcurementDto>();
 
             CreateMap<Spending, SpendingDto>();
-            CreateMap<SpendingDto, Spending>();
+            CreateMap<SpendingDto, Spending>().ForMember(dest => dest.Id, opt => opt.Ignore());
 
 
             CreateMap<ProcurementDto, CommonMoneyAndProducts>();

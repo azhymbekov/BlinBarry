@@ -95,3 +95,4 @@ D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\BlinBerry.Vie
 D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\BlinBerry.csproj.CopyComplete
 D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\BlinBerry.dll
 D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\BlinBerry.pdb
+D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\Razor\Views\Spending\Edit.g.cshtml.cs

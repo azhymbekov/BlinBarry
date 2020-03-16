@@ -18,7 +18,7 @@ namespace BlinBerry.Services.Common.SpendingService.Models
         [Required(ErrorMessage = "Укажите дату")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime Date { get; set; }
-
+        
         public double Kefir { get; set; }
         public double Eggs { get; set; }
         public double Vanila { get; set; }
