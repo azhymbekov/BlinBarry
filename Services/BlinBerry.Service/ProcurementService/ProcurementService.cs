@@ -52,13 +52,12 @@ namespace BlinBerry.Service.ProcurementService
         {
             var result = new OperationResult();
             var procurement = await procurementRepository.All().FirstOrDefaultAsync(x => x.Id == model.Id);
-            
+            var commonAccount = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
 
             try
             {
                 if (procurement == null)
                 {
-                    var commonAccount = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
                     var newProc = mapper.Map<ProductProcurement>(model);
                     var newTransaction = new CommonMoneyAndProducts()
                     {
@@ -79,19 +78,18 @@ namespace BlinBerry.Service.ProcurementService
                 }
                 else
                 {
-                    var account = await accountRepository.All().FirstOrDefaultAsync(x => x.Id == procurement.BlinBerryId);
+                   var procurementTotalSum = procurement.KefirPrice + procurement.OilPrice + procurement.SodaPrice
+                                                        + procurement.EggsPrice + procurement.SaltPrice + procurement.SugarPrice + procurement.VanilaPrice;
 
-                    var previousAccount = accountRepository.All().OrderByDescending(x => x.CreatedOn).Skip(1).First();
+                    commonAccount.TotalCash -= (model.TotalSum - procurementTotalSum);
 
-                    account.TotalCash = previousAccount.TotalCash -  model.TotalSum;
-
-                    account.Kefir = previousAccount.Kefir + model.Kefir; //литр
-                    account.Oil = previousAccount.Oil + model.Oil; // литр
-                    account.Salt = previousAccount.Salt + model.Salt; // кг
-                    account.Eggs = previousAccount.Eggs + model.Eggs; // штук
-                    account.Vanila = previousAccount.Vanila + model.Vanila; // грамм
-                    account.Sugar = previousAccount.Sugar + model.Sugar; // кг
-                    account.Soda = previousAccount.Soda + model.Soda; //грамм
+                    commonAccount.Kefir += (model.Kefir - procurement.Kefir); //литр
+                    commonAccount.Oil += (model.Oil + procurement.Oil); // литр
+                    commonAccount.Salt += (model.Salt + procurement.Salt); // кг
+                    commonAccount.Eggs += (model.Eggs + procurement.EggsPrice); // штук
+                    commonAccount.Vanila += (model.Vanila + procurement.Vanila); // грамм
+                    commonAccount.Sugar += (model.Sugar + procurement.Sugar); // кг
+                    commonAccount.Soda += (model.Soda + procurement.Soda); //грамм
 
                     mapper.Map(model, procurement);
 
