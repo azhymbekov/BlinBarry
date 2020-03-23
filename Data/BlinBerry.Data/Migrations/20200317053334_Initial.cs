@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlinBerry.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -453,8 +453,7 @@ namespace BlinBerry.Data.Migrations
                 column: "ModifiedById");
 
             FillDefaultAccount(migrationBuilder);
-
-            FillDefaultRoles(migrationBuilder);
+            FillDefaultAccount(migrationBuilder);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

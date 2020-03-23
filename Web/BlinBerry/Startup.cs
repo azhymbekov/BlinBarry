@@ -104,17 +104,15 @@ namespace BlinBerry
             var supportedCultures = new[]
             {
                 new CultureInfo("en-US"),
-                new CultureInfo("en-GB"),
-                new CultureInfo("en"),
-                new CultureInfo("ru-RU"),
-                new CultureInfo("ru"),
-                new CultureInfo("de-DE"),
-                new CultureInfo("de")
+                new CultureInfo("fr"),
             };
+
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture("ru-RU"),
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                // Formatting numbers, dates, etc.
                 SupportedCultures = supportedCultures,
+                // UI strings that we have localized.
                 SupportedUICultures = supportedCultures
             });
 
@@ -141,9 +139,11 @@ namespace BlinBerry
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
             app.UseAuthentication();
 
             app.UseMvc(routes =>

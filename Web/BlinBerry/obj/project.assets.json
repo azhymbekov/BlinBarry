@@ -13131,24 +13131,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sibers-net\\.nuget\\packages\\": {},
+    "C:\\Users\\Отец\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Github\\BlinBarry\\Web\\BlinBerry\\BlinBerry.csproj",
+      "projectUniqueName": "D:\\Projects\\github\\BlinBarry\\Web\\BlinBerry\\BlinBerry.csproj",
       "projectName": "BlinBerry",
-      "projectPath": "D:\\Projects\\Github\\BlinBarry\\Web\\BlinBerry\\BlinBerry.csproj",
-      "packagesPath": "C:\\Users\\sibers-net\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Github\\BlinBarry\\Web\\BlinBerry\\obj\\",
+      "projectPath": "D:\\Projects\\github\\BlinBarry\\Web\\BlinBerry\\BlinBerry.csproj",
+      "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\github\\BlinBarry\\Web\\BlinBerry\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\sibers-net\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Отец\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -13160,14 +13163,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data\\BlinBerry.Data.csproj": {
-              "projectPath": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data\\BlinBerry.Data.csproj"
+            "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data\\BlinBerry.Data.csproj": {
+              "projectPath": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data\\BlinBerry.Data.csproj"
             },
-            "D:\\Projects\\Github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj": {
-              "projectPath": "D:\\Projects\\Github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj"
+            "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj": {
+              "projectPath": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj"
             },
-            "D:\\Projects\\Github\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj": {
-              "projectPath": "D:\\Projects\\Github\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj"
+            "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj": {
+              "projectPath": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj"
             }
           }
         }

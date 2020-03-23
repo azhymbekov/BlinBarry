@@ -3646,24 +3646,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sibers-net\\.nuget\\packages\\": {},
+    "C:\\Users\\Отец\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj",
+      "projectUniqueName": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj",
       "projectName": "BlinBerry.Data.Models",
-      "projectPath": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj",
-      "packagesPath": "C:\\Users\\sibers-net\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Models\\obj\\",
+      "projectPath": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj",
+      "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\sibers-net\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Отец\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -3675,8 +3678,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj": {
-              "projectPath": "D:\\Projects\\Github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj"
+            "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj": {
+              "projectPath": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj"
             }
           }
         }

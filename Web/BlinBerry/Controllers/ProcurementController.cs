@@ -34,7 +34,7 @@ namespace BlinBerry.Controllers
             if (procId.HasValue)
             {
                 var proc = await procurementService.PrepareForEditView(procId);
-                return this.View(proc);
+                return View("Edit", proc);
             }
             return View();
         }

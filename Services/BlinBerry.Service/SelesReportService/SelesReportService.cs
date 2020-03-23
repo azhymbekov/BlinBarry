@@ -62,11 +62,12 @@ namespace BlinBerry.Service.SelesReportService
             var result = new OperationResult();
 
             var report = await reportRepository.All().FirstOrDefaultAsync(x => x.Id == model.Id);
+
+            var currentAccount = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
             try
             {
                 if (report == null)
-                {
-                    var currentAccount = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
+                {                  
 
                     var newReport = new SelesReport
                     {
@@ -95,19 +96,16 @@ namespace BlinBerry.Service.SelesReportService
                 }
 
                 else
-                {
-                    var editedAccount = await accountRepository.All().FirstOrDefaultAsync(x => x.Id == report.BlinBerryId);
-
-                    var previousAccount = accountRepository.All().OrderByDescending(x => x.CreatedOn).Skip(1).First();
-                    
-                    editedAccount.TotalCash = previousAccount.TotalCash + ((model.CountOfKg * 170) - (model.DefectiveKg * 170));
-                    editedAccount.Kefir = previousAccount.Kefir - model.TotalKg * 0.55; //литр
-                    editedAccount.Oil = previousAccount.Oil - model.TotalKg * 0.074; // литр
-                    editedAccount.Salt = previousAccount.Salt - model.TotalKg * 0.0022; // кг
-                    editedAccount.Eggs = previousAccount.Eggs - model.TotalKg * 5; // штук
-                    editedAccount.Vanila = previousAccount.Vanila - model.TotalKg * 5.3; // грамм
-                    editedAccount.Sugar = previousAccount.Sugar - model.TotalKg * 0.06; // кг
-                    editedAccount.Soda = previousAccount.Soda - model.TotalKg * 0.16; //грамм
+                {                    
+                    //za4em dobavlyat ewe i braki oni ved ne vliyayut na kassy
+                    currentAccount.TotalCash += ((model.CountOfKg * 170) - (report.CountOfKg * 170));
+                    currentAccount.Kefir -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.55; //литр
+                    currentAccount.Oil -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.074; // литр
+                    currentAccount.Salt -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.0022; // кг
+                    currentAccount.Eggs -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 5; // штук
+                    currentAccount.Vanila -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 5.3; // грамм
+                    currentAccount.Sugar -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.06; // кг
+                    currentAccount.Soda -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.16; //грамм
 
                     report.DayOfWeek = model.DayOfWeek;
                     report.CountOfKg = model.CountOfKg;

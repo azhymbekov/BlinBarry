@@ -29,7 +29,7 @@ namespace BlinBerry.Service.SpendingService
         }
         public IQueryable<SpendingDto> GetList()
         {
-            return mapper.ProjectTo<SpendingDto>(spendingRepository.AllAsNoTracking());
+            return mapper.ProjectTo<SpendingDto>(spendingRepository.AllAsNoTracking().OrderByDescending(x => x.Date));
         }
 
         public Task RemoveAsync(Guid id)

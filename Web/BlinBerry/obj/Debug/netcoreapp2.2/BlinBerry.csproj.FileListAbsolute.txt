@@ -96,3 +96,4 @@ D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\BlinBerry.csp
 D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\BlinBerry.dll
 D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\BlinBerry.pdb
 D:\Projects\Github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\Razor\Views\Spending\Edit.g.cshtml.cs
+D:\Projects\github\BlinBarry\Web\BlinBerry\obj\Debug\netcoreapp2.2\Razor\Views\Procurement\Edit.g.cshtml.cs

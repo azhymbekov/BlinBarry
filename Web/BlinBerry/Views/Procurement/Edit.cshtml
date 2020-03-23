@@ -1,24 +1,24 @@
 ﻿@model BlinBerry.Services.Common.ProcurementService.Models.ProcurementDto
 
 <h2 style="text-align: center">Закуп</h2>
-<br/>
+<br />
 
 <form asp-action="SaveData" style="text-align: center">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row">
         <input asp-for="@Model.Id" type="hidden" />
         <div class="col-md-3" style="border-right: solid; border-color: gray; margin-right: 12%">
             <div class="form-group">
-                <label style="text-align: center; font-size: larger; font-weight: bold; color: #e84a00" >Данные закупки</label>
+                <label style="text-align: center; font-size: larger; font-weight: bold; color: #e84a00">Данные закупки</label>
             </div>
             <div class="form-group">
                 <label asp-for="BuyersName" class="control-label">Имя закупщика</label>
-                <input asp-for="BuyersName" class="form-control"/>
+                <input asp-for="BuyersName" class="form-control" />
                 <span asp-validation-for="BuyersName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ProcurementsDay" class="control-label">Дата закупа</label>
-                <input asp-for="ProcurementsDay" type="date" class="form-control"/>
+                <input asp-for="ProcurementsDay" type="date" class="form-control" />
                 <span asp-validation-for="ProcurementsDay" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,100 +29,100 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-               <label style="text-align: center; font-size: larger; font-weight: bold; color: orangered" >Количество продукции</label>
+                <label style="text-align: center; font-size: larger; font-weight: bold; color: orangered">Количество продукции</label>
             </div>
             <div class="form-group">
                 <label asp-for="Eggs" class="control-label">Яйцо (штук)</label>
-                <input asp-for="Eggs" type="number" value="0" class="form-control"/>
+                <input asp-for="Eggs" type="number" class="form-control" />
                 <span asp-validation-for="Eggs" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Kefir" class="control-label">Кефир (литров)</label>
-                <input asp-for="Kefir" type="number" value="0" class="form-control" />
+                <input asp-for="Kefir" type="number" class="form-control" />
                 <span asp-validation-for="Kefir" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Oil" class="control-label">Масло (литров)</label>
-                <input asp-for="Oil" value="0" type="number" class="form-control" />
+                <input asp-for="Oil" type="number" class="form-control" />
                 <span asp-validation-for="Oil" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Vanila" class="control-label">Ванильный сахар (грамм)</label>
-                <input asp-for="Vanila" type="number" value="0" class="form-control" />
+                <input asp-for="Vanila" type="number" class="form-control" />
                 <span asp-validation-for="Vanila" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Sugar" class="control-label">Сахар (кг)</label>
-                <input asp-for="Sugar" value="0" type="number" class="form-control" />
+                <input asp-for="Sugar" type="number" class="form-control" />
                 <span asp-validation-for="Sugar" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Salt" class="control-label">Соль (кг)</label>
-                <input asp-for="Salt" value="0" type="number" class="form-control" />
+                <input asp-for="Salt" type="number" class="form-control" />
                 <span asp-validation-for="Salt" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Soda" class="control-label">Сода (кг)</label>
-                <input asp-for="Soda" value="0" type="number" class="form-control" />
+                <input asp-for="Soda" type="number" class="form-control" />
                 <span asp-validation-for="Soda" class="text-danger"></span>
             </div>
         </div>
 
 
         <div class="col-md-3">
-            
+
             <div class="form-group">
-                <label style="text-align: center; font-size: larger; font-weight: bold; color: orangered" >Цена продукции</label>
+                <label style="text-align: center; font-size: larger; font-weight: bold; color: orangered">Цена продукции</label>
             </div>
             <div class="form-group">
                 <label asp-for="EggsPrice" class="control-label">Яйцо</label>
-                <input asp-for="EggsPrice" value="0" type="number" class="form-control"/>
+                <input asp-for="EggsPrice" type="number" class="form-control" />
                 <span asp-validation-for="EggsPrice" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="KefirPrice" class="control-label">Кефир</label>
-                <input asp-for="KefirPrice" type="number" class="form-control"/>
+                <input asp-for="KefirPrice" type="number" class="form-control" />
                 <span asp-validation-for="KefirPrice" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="OilPrice" class="control-label">Масло</label>
-                <input asp-for="OilPrice" value="0" type="number" class="form-control"/>
+                <input asp-for="OilPrice" type="number" class="form-control" />
                 <span asp-validation-for="OilPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="VanilaPrice" class="control-label">Ванильный сахар</label>
-                <input asp-for="VanilaPrice" value="0" type="number" class="form-control"/>
+                <input asp-for="VanilaPrice" type="number" class="form-control" />
                 <span asp-validation-for="VanilaPrice" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="SugarPrice" class="control-label">Сахар</label>
-                <input asp-for="SugarPrice" value="0" type="number" class="form-control"/>
+                <input asp-for="SugarPrice" type="number" class="form-control" />
                 <span asp-validation-for="SugarPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SaltPrice" class="control-label">Соль</label>
-                <input asp-for="SaltPrice" value="0" type="number" class="form-control"/>
+                <input asp-for="SaltPrice" type="number" class="form-control" />
                 <span asp-validation-for="SaltPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SodaPrice" class="control-label">Сода</label>
-                <input asp-for="SodaPrice" value="0" type="number" class="form-control"/>
+                <input asp-for="SodaPrice" type="number" class="form-control" />
                 <span asp-validation-for="SodaPrice" class="text-danger"></span>
             </div>
         </div>
     </div>
-    <br/>
+    <br />
 
     <div class="form-group">
-            <input type="submit" value="Сохранить" class="btn btn-primary" />
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
 
-        </div>
+    </div>
 </form>
 
 

@@ -17,7 +17,9 @@ namespace BlinBerry.Services.Common.CommonInfoService.Models
         public double TotalCash { get; set; }
 
 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime? CreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
     }
 }

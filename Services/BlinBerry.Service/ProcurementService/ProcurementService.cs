@@ -36,7 +36,7 @@ namespace BlinBerry.Service.ProcurementService
         public IQueryable<ProcurementDto> GetList()
         {
             var products = procurementRepository.All();
-            return products.Select(x => mapper.Map<ProcurementDto>(x));
+            return products.Select(x => mapper.Map<ProcurementDto>(x)).OrderByDescending(x => x.ProcurementsDay);
         }
 
         public async Task RemoveAsync(Guid id)
@@ -84,12 +84,12 @@ namespace BlinBerry.Service.ProcurementService
                     commonAccount.TotalCash -= (model.TotalSum - procurementTotalSum);
 
                     commonAccount.Kefir += (model.Kefir - procurement.Kefir); //литр
-                    commonAccount.Oil += (model.Oil + procurement.Oil); // литр
-                    commonAccount.Salt += (model.Salt + procurement.Salt); // кг
-                    commonAccount.Eggs += (model.Eggs + procurement.EggsPrice); // штук
-                    commonAccount.Vanila += (model.Vanila + procurement.Vanila); // грамм
-                    commonAccount.Sugar += (model.Sugar + procurement.Sugar); // кг
-                    commonAccount.Soda += (model.Soda + procurement.Soda); //грамм
+                    commonAccount.Oil += (model.Oil - procurement.Oil); // литр
+                    commonAccount.Salt += (model.Salt - procurement.Salt); // кг
+                    commonAccount.Eggs += (model.Eggs - procurement.Eggs); // штук
+                    commonAccount.Vanila += (model.Vanila - procurement.Vanila); // грамм
+                    commonAccount.Sugar += (model.Sugar - procurement.Sugar); // кг
+                    commonAccount.Soda += (model.Soda - procurement.Soda); //грамм
 
                     mapper.Map(model, procurement);
 
