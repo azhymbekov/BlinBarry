@@ -14,3 +14,12 @@ D:\Projects\Github\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalConta
 D:\Projects\Github\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.AssemblyInfo.cs
 D:\Projects\Github\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.dll
 D:\Projects\Github\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.pdb
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\bin\Debug\netstandard2.0\GlobalContants.deps.json
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\bin\Debug\netstandard2.0\GlobalContants.dll
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\bin\Debug\netstandard2.0\GlobalContants.pdb
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.AssemblyInfoInputs.cache
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.AssemblyInfo.cs
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.dll
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.pdb
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.csprojAssemblyReference.cache
+D:\Projects\github\NewBlin\BlinBarry\GlobalContants\obj\Debug\netstandard2.0\GlobalContants.csproj.CoreCompileInputs.cache

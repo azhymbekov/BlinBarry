@@ -22,3 +22,15 @@ D:\Projects\Github\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0
 D:\Projects\Github\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.csproj.CopyComplete
 D:\Projects\Github\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.dll
 D:\Projects\Github\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.pdb
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\bin\Debug\netstandard2.0\BlinBerry.Data.Models.deps.json
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\bin\Debug\netstandard2.0\BlinBerry.Data.Models.dll
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\bin\Debug\netstandard2.0\BlinBerry.Data.Models.pdb
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\bin\Debug\netstandard2.0\BlinBerry.Data.Common.dll
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\bin\Debug\netstandard2.0\BlinBerry.Data.Common.pdb
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.csprojAssemblyReference.cache
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.AssemblyInfoInputs.cache
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.AssemblyInfo.cs
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.csproj.CopyComplete
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.dll
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.pdb
+D:\Projects\github\NewBlin\BlinBarry\Data\BlinBerry.Data.Models\obj\Debug\netstandard2.0\BlinBerry.Data.Models.csproj.CoreCompileInputs.cache

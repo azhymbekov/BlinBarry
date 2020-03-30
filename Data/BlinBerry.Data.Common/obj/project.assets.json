@@ -186,11 +186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
+      "projectUniqueName": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
       "projectName": "BlinBerry.Data.Common",
-      "projectPath": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
+      "projectPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Data\\BlinBerry.Data.Common\\BlinBerry.Data.Common.csproj",
       "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Common\\obj\\",
+      "outputPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Data\\BlinBerry.Data.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -3829,11 +3829,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj",
+      "projectUniqueName": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj",
       "projectName": "BlinBerry.Service",
-      "projectPath": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj",
+      "projectPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Service\\BlinBerry.Service.csproj",
       "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Service\\obj\\",
+      "outputPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -3854,11 +3854,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj": {
-              "projectPath": "D:\\Projects\\github\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj"
+            "D:\\Projects\\github\\NewBlin\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj": {
+              "projectPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Data\\BlinBerry.Data.Models\\BlinBerry.Data.Models.csproj"
             },
-            "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj": {
-              "projectPath": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj"
+            "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj": {
+              "projectPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj"
             }
           }
         }

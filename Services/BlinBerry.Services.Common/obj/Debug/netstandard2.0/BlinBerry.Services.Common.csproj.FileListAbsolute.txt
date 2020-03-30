@@ -24,3 +24,17 @@ D:\Projects\Github\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netsta
 D:\Projects\Github\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.csproj.CopyComplete
 D:\Projects\Github\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.dll
 D:\Projects\Github\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.pdb
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\BlinBerry.Services.Common.deps.json
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\BlinBerry.Services.Common.dll
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\BlinBerry.Services.Common.pdb
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\GlobalContants.dll
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\GlobalContants.pdb
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.csprojAssemblyReference.cache
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.AssemblyInfoInputs.cache
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.AssemblyInfo.cs
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.csproj.CopyComplete
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.dll
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.pdb
+D:\Projects\github\NewBlin\BlinBarry\Services\BlinBerry.Services.Common\obj\Debug\netstandard2.0\BlinBerry.Services.Common.csproj.CoreCompileInputs.cache

@@ -35,52 +35,41 @@
     <header>
         @if (User.Identity.IsAuthenticated)
         {
-            <!--Navbar -->
-            <nav class="mb-1 navbar navbar-expand-sm navbar-dark orange lighten-1 mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                        <img src="/img/cake.png" width="75px" alt="">
-                        BlinBerry
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
-                            aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link " asp-area="" asp-controller="SelesReport" asp-action="Index">Продажи</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Procurement" asp-action="GetAllProcurements">Закупы</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Spending" asp-action="GetAllSpendings">Расходы</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav ml-auto nav-flex-icons">
-                            <li class="nav-item avatar">
-                                <a class="nav-link p-0" href="#">
-                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-13.jpg" class="rounded-circle z-depth-0"
-                                         alt="avatar image" height="35">
-                                </a>
-                            </li>
-                            <li class="nav-item flex-grow-0">
-                                <a class="nav-link" href="#"> @(this.User.Identity.Name)!</a>
-                            </li>
-                            <li class="nav-item">
-                                <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout"
-                                      asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
-                                    <button type="submit" class="nav-link btn btn-link text-dark">Выйти</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
+       
+        <nav class="navbar navbar-expand-lg navbar-light"     style="margin-bottom: 2%; background-color : #ffc61a;">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/img/cake.png" width="75px" alt="">
+                    BlinBerry
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+                        aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="SelesReport" asp-action="Index">Продажи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Procurement" asp-action="GetAllProcurements">Закупы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Spending" asp-action="GetAllSpendings">Расходы</a>
+                        </li>
+
+                    </ul>
+                    <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout"
+                          asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Выйти</button>
+                    </form>
                 </div>
-            </nav>
-            <!--/.Navbar -->
+            </div>
+        </nav>
+       
         }
-        </header>
+    </header>
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">

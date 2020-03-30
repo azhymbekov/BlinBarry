@@ -202,11 +202,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
+      "projectUniqueName": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
       "projectName": "BlinBerry.Services.Common",
-      "projectPath": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
+      "projectPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Services.Common\\BlinBerry.Services.Common.csproj",
       "packagesPath": "C:\\Users\\Отец\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\github\\BlinBarry\\Services\\BlinBerry.Services.Common\\obj\\",
+      "outputPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\Services\\BlinBerry.Services.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -227,8 +227,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\Projects\\github\\BlinBarry\\GlobalContants\\GlobalContants.csproj": {
-              "projectPath": "D:\\Projects\\github\\BlinBarry\\GlobalContants\\GlobalContants.csproj"
+            "D:\\Projects\\github\\NewBlin\\BlinBarry\\GlobalContants\\GlobalContants.csproj": {
+              "projectPath": "D:\\Projects\\github\\NewBlin\\BlinBarry\\GlobalContants\\GlobalContants.csproj"
             }
           }
         }
