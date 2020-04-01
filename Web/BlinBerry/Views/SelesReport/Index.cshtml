@@ -27,7 +27,7 @@
             <td>
                 <span style="color: blueviolet;">
 
-                  Количество браков :   @Html.DisplayFor(modelItem => item.DefectiveKg) 
+                    Количество браков :   @Html.DisplayFor(modelItem => item.DefectiveKg)
                 </span>
 
                 <br />
@@ -36,6 +36,10 @@
 
             <td>
                 @Html.ActionLink("Редактировать", "CreateNewReportAsync", new { seleId = item.Id })
+            </td>
+
+            <td>
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
             </td>
         </tr>
         }

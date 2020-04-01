@@ -1,12 +1,9 @@
 ﻿using BlinBerry.Clams;
 using BlinBerry.Services.Common.SelesReport;
 using BlinBerry.Services.Common.SelesReport.Models;
-using GlobalContants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlinBerry.Controllers
@@ -33,7 +30,6 @@ namespace BlinBerry.Controllers
             if (seleId.HasValue)
             {
                 var userModel = await selesReportService.PrepeareWordForEditView(seleId);
-                ViewBag.IsForEdit = true;
                 return this.View(userModel);
             }
             return View();
@@ -47,6 +43,13 @@ namespace BlinBerry.Controllers
             return RedirectToAction("Index", "SelesReport");
         }
 
+
+        [Authorize]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await selesReportService.RemoveAsync(id);
+            return RedirectToAction("Index", "SelesReport");
+        }
 
     }
 }
