@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlinBerry.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200317053334_Initial")]
-    partial class Initial
+    [Migration("20200402055409_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,50 +21,10 @@ namespace BlinBerry.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid?>("CreatedById");
-
-                    b.Property<DateTime>("CreatedOn");
-
-                    b.Property<double>("Eggs");
-
-                    b.Property<double>("Kefir");
-
-                    b.Property<Guid?>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedOn");
-
-                    b.Property<double>("Oil");
-
-                    b.Property<double>("Salt");
-
-                    b.Property<double>("Soda");
-
-                    b.Property<double>("Sugar");
-
-                    b.Property<double?>("TotalCash");
-
-                    b.Property<double>("Vanila");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("Account");
-                });
-
             modelBuilder.Entity("BlinBerry.Data.Models.Entities.ProductProcurement", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("BlinBerryId");
 
                     b.Property<string>("BuyersName");
 
@@ -110,8 +70,6 @@ namespace BlinBerry.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlinBerryId");
-
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("ModifiedById");
@@ -119,12 +77,48 @@ namespace BlinBerry.Data.Migrations
                     b.ToTable("ProductProcurements");
                 });
 
-            modelBuilder.Entity("BlinBerry.Data.Models.Entities.SelesReport", b =>
+            modelBuilder.Entity("BlinBerry.Data.Models.Entities.Recipe", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("BlinBerryId");
+                    b.Property<Guid?>("CreatedById");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<double>("Eggs");
+
+                    b.Property<double>("Kefir");
+
+                    b.Property<Guid?>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedOn");
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Oil");
+
+                    b.Property<double>("Salt");
+
+                    b.Property<double>("Soda");
+
+                    b.Property<double>("Sugar");
+
+                    b.Property<double>("Vanila");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("Recipes");
+                });
+
+            modelBuilder.Entity("BlinBerry.Data.Models.Entities.SeleTransaction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<double>("CountOfKg");
 
@@ -132,7 +126,7 @@ namespace BlinBerry.Data.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
-                    b.Property<DateTime>("DayOfWeek");
+                    b.Property<DateTime>("Date");
 
                     b.Property<double>("DefectiveKg");
 
@@ -140,9 +134,9 @@ namespace BlinBerry.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.HasKey("Id");
+                    b.Property<double>("TotalProfit");
 
-                    b.HasIndex("BlinBerryId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CreatedById");
 
@@ -155,8 +149,6 @@ namespace BlinBerry.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("BlinBerryId");
 
                     b.Property<string>("Comment");
 
@@ -188,13 +180,49 @@ namespace BlinBerry.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlinBerryId");
-
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("ModifiedById");
 
                     b.ToTable("Spendings");
+                });
+
+            modelBuilder.Entity("BlinBerry.Data.Models.Entities.State", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid?>("CreatedById");
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<double>("Eggs");
+
+                    b.Property<double>("Kefir");
+
+                    b.Property<Guid?>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedOn");
+
+                    b.Property<double>("Oil");
+
+                    b.Property<double>("Salt");
+
+                    b.Property<double>("Soda");
+
+                    b.Property<double>("Sugar");
+
+                    b.Property<double>("TotalCash");
+
+                    b.Property<double>("Vanila");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("Account");
                 });
 
             modelBuilder.Entity("BlinBerry.Data.Models.IdentityModels.ApplicationUser", b =>
@@ -367,24 +395,8 @@ namespace BlinBerry.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", b =>
-                {
-                    b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
             modelBuilder.Entity("BlinBerry.Data.Models.Entities.ProductProcurement", b =>
                 {
-                    b.HasOne("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", "BlinBerry")
-                        .WithMany("Procurements")
-                        .HasForeignKey("BlinBerryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
@@ -394,13 +406,19 @@ namespace BlinBerry.Data.Migrations
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("BlinBerry.Data.Models.Entities.SelesReport", b =>
+            modelBuilder.Entity("BlinBerry.Data.Models.Entities.Recipe", b =>
                 {
-                    b.HasOne("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", "BlinBerry")
-                        .WithMany("Reports")
-                        .HasForeignKey("BlinBerryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
 
+                    b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("BlinBerry.Data.Models.Entities.SeleTransaction", b =>
+                {
                     b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
@@ -412,11 +430,17 @@ namespace BlinBerry.Data.Migrations
 
             modelBuilder.Entity("BlinBerry.Data.Models.Entities.Spending", b =>
                 {
-                    b.HasOne("BlinBerry.Data.Models.Entities.CommonMoneyAndProducts", "BlinBerry")
-                        .WithMany("Spending")
-                        .HasForeignKey("BlinBerryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
 
+                    b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("BlinBerry.Data.Models.Entities.State", b =>
+                {
                     b.HasOne("BlinBerry.Data.Models.IdentityModels.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");

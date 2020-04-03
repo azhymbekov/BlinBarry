@@ -14,40 +14,45 @@ namespace BlinBerry.Service.SelesReportService
 {
     public class SelesReportService : ISelesReportService
     {
-        private readonly IRepository<SelesReport> reportRepository;
+        private readonly IRepository<SeleTransaction> reportRepository;
 
-        private readonly IRepository<CommonMoneyAndProducts> accountRepository;
+        private readonly IRepository<State> accountRepository;
 
-        public SelesReportService(IRepository<SelesReport> reportRepository,
-             IRepository<CommonMoneyAndProducts> accountRepository)
+        private readonly IRepository<Recipe> recipeRepository;
+
+        public SelesReportService(IRepository<SeleTransaction> reportRepository,
+             IRepository<State> accountRepository,
+             IRepository<Recipe> recipeRepository)
         {
             this.reportRepository = reportRepository;
             this.accountRepository = accountRepository;
+            this.recipeRepository = recipeRepository;
         }
 
-        public IQueryable<SelesReportDto> GetReportsList()
+        public IQueryable<SeleTransactionDto> GetReportsList()
         {
-            return from r in reportRepository.All().OrderByDescending(x => x.DayOfWeek)
-                   select new SelesReportDto
+            return from r in reportRepository.All().OrderByDescending(x => x.Date)
+                   select new SeleTransactionDto
                    {
                        Id = r.Id,
                        CountOfKg = r.CountOfKg ,
-                       DayOfWeek = r.DayOfWeek,
+                       DayOfWeek = r.Date,
                        DefectiveKg = r.DefectiveKg,
-                       Cash = r.CountOfKg*170
+                       TotalProfit = r.TotalProfit
                    };
         }
 
-        public async Task<SelesReportDto> PrepeareWordForEditView(Guid? id)
+        public async Task<SeleTransactionDto> PrepeareWordForEditView(Guid? id)
         {
             var report = (from w in reportRepository.AllAsNoTracking()
                         where w.Id == id
-                        select new SelesReportDto()
+                        select new SeleTransactionDto()
                         {
                             Id = w.Id,
                             CountOfKg = w.CountOfKg,
-                            DayOfWeek = w.DayOfWeek,
-                            DefectiveKg = w.DefectiveKg
+                            DayOfWeek = w.Date,
+                            DefectiveKg = w.DefectiveKg,
+                            TotalProfit = w.TotalProfit
                         }).FirstOrDefault();
             return report;
         }
@@ -57,11 +62,15 @@ namespace BlinBerry.Service.SelesReportService
             throw new NotImplementedException();
         }
 
-        public async Task<OperationResult> SaveAsync(SelesReportDto model, Guid userId)
+        public async Task<OperationResult> SaveAsync(SeleTransactionDto model, Guid userId)
         {
             var result = new OperationResult();
 
             var report = await reportRepository.All().FirstOrDefaultAsync(x => x.Id == model.Id);
+
+            //если добавятся другие рецепты , то у SeleTransaction добавиться новое поле 
+
+            var recipe = await recipeRepository.All().FirstOrDefaultAsync();
 
             var currentAccount = await accountRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefaultAsync();
             try
@@ -69,47 +78,43 @@ namespace BlinBerry.Service.SelesReportService
                 if (report == null)
                 {                  
 
-                    var newReport = new SelesReport
+                    var newReport = new SeleTransaction
                     {
                         Id = Guid.NewGuid(),
                         CountOfKg = model.CountOfKg,
                         DefectiveKg = model.DefectiveKg,
-                        DayOfWeek = model.DayOfWeek
-                    };
-                    
-                    var newTransaction = new CommonMoneyAndProducts()
-                    {
-                        Id = Guid.NewGuid(),
-                        TotalCash = currentAccount.TotalCash + ((model.CountOfKg * 170) - (model.DefectiveKg * 170)),
-                        Kefir = currentAccount.Kefir - model.TotalKg * 0.55, //литр
-                        Oil = currentAccount.Oil - model.TotalKg * 0.074, // литр
-                        Salt = currentAccount.Salt - model.TotalKg * 0.0022, // кг
-                        Eggs = currentAccount.Eggs - model.TotalKg * 5, // штук
-                        Vanila = currentAccount.Vanila - model.TotalKg * 5.3, // грамм
-                        Sugar = currentAccount.Sugar - model.TotalKg * 0.06, // кг
-                        Soda = currentAccount.Soda - model.TotalKg * 0.16, //грамм
+                        Date = model.DayOfWeek,
+                        TotalProfit = model.TotalProfit
                     };
 
-                    newReport.BlinBerryId = newTransaction.Id;
+                    currentAccount.TotalCash += model.TotalProfit;
+                    currentAccount.Kefir -= model.TotalKg * recipe.Kefir;
+                    currentAccount.Oil -= model.TotalKg * recipe.Oil;
+                    currentAccount.Salt -= model.TotalKg * recipe.Salt;
+                    currentAccount.Eggs -= model.TotalKg * recipe.Eggs;
+                    currentAccount.Vanila -= model.TotalKg * recipe.Vanila;
+                    currentAccount.Sugar -= model.TotalKg * recipe.Sugar;
+                    currentAccount.Soda -= model.TotalKg * recipe.Soda;
+                   
                     reportRepository.Add(newReport);
-                    accountRepository.Add(newTransaction);
                 }
 
                 else
                 {                    
                     //za4em dobavlyat ewe i braki oni ved ne vliyayut na kassy
-                    currentAccount.TotalCash += ((model.CountOfKg * 170) - (report.CountOfKg * 170));
-                    currentAccount.Kefir -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.55; //литр
-                    currentAccount.Oil -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.074; // литр
-                    currentAccount.Salt -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.0022; // кг
-                    currentAccount.Eggs -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 5; // штук
-                    currentAccount.Vanila -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 5.3; // грамм
-                    currentAccount.Sugar -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.06; // кг
-                    currentAccount.Soda -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * 0.16; //грамм
+                    currentAccount.TotalCash += (model.TotalProfit - report.TotalProfit);
+                    currentAccount.Kefir -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Kefir; //литр
+                    currentAccount.Oil -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Oil; // литр
+                    currentAccount.Salt -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Salt; // кг
+                    currentAccount.Eggs -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Eggs; // штук
+                    currentAccount.Vanila -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Vanila; // грамм
+                    currentAccount.Sugar -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Sugar; // кг
+                    currentAccount.Soda -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Soda; //грамм
 
-                    report.DayOfWeek = model.DayOfWeek;
+                    report.Date = model.DayOfWeek;
                     report.CountOfKg = model.CountOfKg;
                     report.DefectiveKg = model.DefectiveKg;
+                    report.TotalProfit = model.TotalProfit;
                 }
 
                 await reportRepository.SaveChangesAsync(userId);

@@ -15,7 +15,7 @@ namespace BlinBerry.Data.Configurations
             builder.Property(x => x.Money).IsRequired();
             builder.Property(x => x.Comment).HasColumnType("NVARCHAR(200)").HasMaxLength(200).IsRequired();
             builder.Property(x => x.Date).IsRequired();
-            builder.HasOne(x => x.BlinBerry).WithMany(x => x.Spending).HasForeignKey(x => x.BlinBerryId).IsRequired();
+
         }
     }
 }

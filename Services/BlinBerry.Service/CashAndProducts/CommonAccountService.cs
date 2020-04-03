@@ -15,9 +15,9 @@ namespace BlinBerry.Service.CashAndProducts
     public class CommonAccountService : ICommonInfoAboutAccountService
     {
         private readonly IMapper mapper;
-        private readonly IRepository<CommonMoneyAndProducts> accountRepository;
+        private readonly IRepository<State> accountRepository;
 
-        public CommonAccountService(IMapper mapper, IRepository<CommonMoneyAndProducts> accountRepository)
+        public CommonAccountService(IMapper mapper, IRepository<State> accountRepository)
         {
             this.mapper = mapper;
             this.accountRepository = accountRepository;

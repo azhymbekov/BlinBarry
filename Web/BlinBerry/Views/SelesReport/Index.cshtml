@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlinBerry.Services.Common.SelesReport.Models.SelesReportDto>
+﻿@model IEnumerable<BlinBerry.Services.Common.SelesReport.Models.SeleTransactionDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -31,7 +31,7 @@
                 </span>
 
                 <br />
-                <span style="font-size: x-small">  Выручка за день : @item.Cash</span>
+                <span style="font-size: x-small">  Выручка за день : @item.TotalProfit</span>
             </td>
 
             <td>

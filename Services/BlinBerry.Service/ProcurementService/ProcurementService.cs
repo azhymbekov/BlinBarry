@@ -17,11 +17,11 @@ namespace BlinBerry.Service.ProcurementService
     {
         private readonly IRepository<ProductProcurement> procurementRepository;
 
-        private readonly IRepository<CommonMoneyAndProducts> accountRepository;
+        private readonly IRepository<State> accountRepository;
 
         private readonly IMapper mapper;
 
-        public ProcurementService(IRepository<ProductProcurement> procurementRepository, IRepository<CommonMoneyAndProducts> accountRepository, IMapper mapper)
+        public ProcurementService(IRepository<ProductProcurement> procurementRepository, IRepository<State> accountRepository, IMapper mapper)
         {
             this.procurementRepository = procurementRepository;
             this.accountRepository = accountRepository;
@@ -42,9 +42,7 @@ namespace BlinBerry.Service.ProcurementService
         public async Task RemoveAsync(Guid id)
         {
             var procurement = await procurementRepository.GetByIdAsync(id);
-            var accountInfo = await accountRepository.GetByAsync(x => x.Id == procurement.BlinBerryId);
             procurementRepository.Delete(procurement);
-            accountRepository.Delete(accountInfo);
             await procurementRepository.SaveChangesAsync();
         }
 
@@ -59,21 +57,16 @@ namespace BlinBerry.Service.ProcurementService
                 if (procurement == null)
                 {
                     var newProc = mapper.Map<ProductProcurement>(model);
-                    var newTransaction = new CommonMoneyAndProducts()
-                    {
-                        Id = Guid.NewGuid(),
-                        TotalCash = commonAccount.TotalCash - model.TotalSum,
-                        Kefir = commonAccount.Kefir + model.Kefir,
-                        Oil = commonAccount.Oil + model.Oil,
-                        Salt = commonAccount.Salt+model.Salt,
-                        Eggs = commonAccount.Eggs+model.Eggs,
-                        Vanila = commonAccount.Vanila + model.Vanila,
-                        Sugar = commonAccount.Sugar+model.Sugar,
-                        Soda = commonAccount.Soda+model.Soda
-                    };
 
-                    newProc.BlinBerryId = newTransaction.Id;
-                    accountRepository.Add(newTransaction);
+                    commonAccount.TotalCash -= model.TotalSum;
+                    commonAccount.Kefir += model.Kefir;
+                    commonAccount.Oil += model.Oil;
+                    commonAccount.Salt += model.Salt;
+                    commonAccount.Eggs += model.Eggs;
+                    commonAccount.Vanila += model.Vanila;
+                    commonAccount.Sugar += model.Sugar;
+                    commonAccount.Soda += model.Soda;
+
                     procurementRepository.Add(newProc);
                 }
                 else

@@ -14,10 +14,6 @@ namespace BlinBerry.Data.Models.Entities
 
          public string Comment { get; set; }
 
-         public CommonMoneyAndProducts BlinBerry { get; set; }
-
-         public Guid BlinBerryId { get; set; }
-
          public double KefirPrice { get; set; }
          public double EggsPrice { get; set; }
          public double VanilaPrice { get; set; }

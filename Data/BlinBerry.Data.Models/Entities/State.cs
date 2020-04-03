@@ -6,12 +6,8 @@ using System.Text;
 
 namespace BlinBerry.Data.Models.Entities
 {
-    public class Spending : BaseProdusctModel<Guid, ApplicationUser>
+    public class State : BaseProdusctModel<Guid, ApplicationUser>
     {
-        public double Money { get; set; }
-
-        public string Comment { get; set; }
-
-        public DateTime Date { get; set; }
+        public double TotalCash { get; set; }
     }
 }

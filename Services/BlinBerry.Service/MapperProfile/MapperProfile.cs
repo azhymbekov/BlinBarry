@@ -13,8 +13,8 @@ namespace BlinBerry.Service.MapperProfile
     {
         public MapperProfile()
         {
-            CreateMap<CommonInfoDto, CommonMoneyAndProducts>();
-            CreateMap<CommonMoneyAndProducts, CommonInfoDto>();
+            CreateMap<CommonInfoDto, State>();
+            CreateMap<State, CommonInfoDto>();
 
             CreateMap<ProcurementDto, ProductProcurement>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
@@ -24,8 +24,8 @@ namespace BlinBerry.Service.MapperProfile
             CreateMap<SpendingDto, Spending>().ForMember(dest => dest.Id, opt => opt.Ignore());
 
 
-            CreateMap<ProcurementDto, CommonMoneyAndProducts>();
-            CreateMap<CommonMoneyAndProducts, ProcurementDto>();
+            CreateMap<ProcurementDto, State>();
+            CreateMap<State, ProcurementDto>();
         }
     }
 }

@@ -6,17 +6,14 @@ using System.Text;
 
 namespace BlinBerry.Data.Models.Entities
 {
-    public class SelesReport : BaseModel<Guid, ApplicationUser>
+    public class SeleTransaction : BaseModel<Guid, ApplicationUser>
     {
         public double CountOfKg { get; set; }
 
-        public DateTime DayOfWeek { get; set; }
+        public DateTime Date { get; set; }
 
         public double DefectiveKg { get; set; }
 
-        public CommonMoneyAndProducts BlinBerry { get; set; }
-
-        public Guid BlinBerryId { get; set; }
-
+        public double TotalProfit { get; set; }
     }
 }

@@ -17,11 +17,11 @@ namespace BlinBerry.Service.SpendingService
     {
         private readonly IRepository<Spending> spendingRepository;
 
-        private readonly IRepository<CommonMoneyAndProducts> accountRepository;
+        private readonly IRepository<State> accountRepository;
 
         private readonly IMapper mapper;
 
-        public SpendingService(IRepository<Spending> spendingRepository, IRepository<CommonMoneyAndProducts> accountRepository, IMapper mapper)
+        public SpendingService(IRepository<Spending> spendingRepository, IRepository<State> accountRepository, IMapper mapper)
         {
             this.spendingRepository = spendingRepository;
             this.accountRepository = accountRepository;
@@ -51,28 +51,20 @@ namespace BlinBerry.Service.SpendingService
                    
                     var newSpec = mapper.Map<Spending>(model);
 
-                    var newTransaction = new CommonMoneyAndProducts()
-                    {
-                        Id = Guid.NewGuid(),
-                        TotalCash = account.TotalCash - model.Money,
-                        Kefir = account.Kefir - model.Kefir, //литр
-                        Oil = account.Oil - model.Oil, // литр
-                        Salt = account.Salt - model.Salt, // кг
-                        Eggs = account.Eggs - model.Eggs, // штук
-                        Vanila = account.Vanila - model.Vanila, // грамм
-                        Sugar = account.Sugar - model.Sugar, // кг
-                        Soda = account.Soda - model.Soda //грамм
-                    };
-
-                    newSpec.BlinBerryId = newTransaction.Id;
-                    
-                    accountRepository.Add(newTransaction);
+                    account.TotalCash -= model.Money;
+                    account.Kefir -= model.Kefir;
+                    account.Oil -= model.Oil;
+                    account.Salt -= model.Salt;
+                    account.Eggs -= model.Eggs;
+                    account.Vanila -= model.Vanila;
+                    account.Sugar -= model.Sugar;
+                    account.Soda -= model.Soda;
                     
                     spendingRepository.Add(newSpec);
                 }
                 else
                 {
-                    //var currentAccount = await accountRepository.GetByAsync(x => x.Id == spending.BlinBerryId);
+                    //var currentAccount = await accountRepository.GetByAsync(x => x.Id == spending.StateId);
                     //var previousAccount = accountRepository.All().OrderByDescending(x => x.CreatedOn).Skip(1).First();
                     
                     //при каждом обновлении передается старое значение и он начинает минусовать кассу
@@ -85,9 +77,8 @@ namespace BlinBerry.Service.SpendingService
                     account.Vanila -= (model.Vanila - spending.Vanila); // грамм
                     account.Sugar -= (model.Sugar - spending.Sugar); // кг
                     account.Soda -= (model.Soda - spending.Soda); //грамм
-                    
 
-                    var mappedSpending = mapper.Map(model, spending);
+                    mapper.Map(model, spending);
 
                 }
                 

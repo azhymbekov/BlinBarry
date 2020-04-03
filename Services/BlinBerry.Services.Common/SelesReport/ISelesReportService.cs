@@ -11,12 +11,12 @@ namespace BlinBerry.Services.Common.SelesReport
     public interface ISelesReportService
     {
 
-        IQueryable<SelesReportDto> GetReportsList();
+        IQueryable<SeleTransactionDto> GetReportsList();
 
         Task RemoveAsync(Guid id);
 
-        Task<OperationResult> SaveAsync(SelesReportDto model, Guid userId);
+        Task<OperationResult> SaveAsync(SeleTransactionDto model, Guid userId);
 
-        Task<SelesReportDto> PrepeareWordForEditView(Guid? id);
+        Task<SeleTransactionDto> PrepeareWordForEditView(Guid? id);
     }
 }

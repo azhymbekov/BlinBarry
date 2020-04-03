@@ -1,4 +1,4 @@
-﻿@model BlinBerry.Services.Common.SelesReport.Models.SelesReportDto
+﻿@model BlinBerry.Services.Common.SelesReport.Models.SeleTransactionDto
 
 <form asp-action="CreateNewReportAsync">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -8,13 +8,18 @@
 
             <div class="form-group">
                 <label asp-for="CountOfKg" class="control-label">Продано кг</label>
-                <input asp-for="CountOfKg" class="form-control" />
+                <input id="countOfKg" onchange="changeProfit()"  asp-for="CountOfKg" class="form-control" />
                 <span asp-validation-for="CountOfKg" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DefectiveKg" class="control-label">Браков кг</label>
                 <input asp-for="DefectiveKg" class="form-control" />
                 <span asp-validation-for="DefectiveKg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalProfit" class="control-label">Сумма прибыли</label>
+                <input id="totalProfit" asp-for="TotalProfit" class="form-control" />
+                <span asp-validation-for="TotalProfit" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DayOfWeek" class="control-label">Дата</label>
@@ -27,3 +32,9 @@
         <input type="submit" value="Сохранить" class="btn btn-primary" />
     </div>
 </form>
+
+<script type="text/javascript">
+    function changeProfit() {
+        $("#totalProfit").val($("#countOfKg").val() * 170)
+    }
+</script>

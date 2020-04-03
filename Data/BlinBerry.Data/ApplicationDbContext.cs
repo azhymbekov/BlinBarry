@@ -18,10 +18,11 @@ namespace BlinBerry.Data
         }
         
         public DbSet<ProductProcurement> ProductProcurements { get; set; }
-        public DbSet<SelesReport> SelesReports { get; set; }
+        public DbSet<SeleTransaction> SelesReports { get; set; }
         public DbSet<Spending> Spendings { get; set; }
-        public DbSet<CommonMoneyAndProducts> Account { get; set; }
+        public DbSet<State> Account { get; set; }
 
+        public DbSet<Recipe> Recipes { get; set; }
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

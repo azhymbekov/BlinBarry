@@ -37,7 +37,7 @@ namespace BlinBerry.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> CreateNewReportAsync(SelesReportDto model)
+        public async Task<IActionResult> CreateNewReportAsync(SeleTransactionDto model)
         {
             await selesReportService.SaveAsync(model, this.User.GetUserId());
             return RedirectToAction("Index", "SelesReport");
