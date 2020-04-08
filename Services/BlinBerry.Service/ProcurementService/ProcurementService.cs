@@ -42,6 +42,17 @@ namespace BlinBerry.Service.ProcurementService
         public async Task RemoveAsync(Guid id)
         {
             var procurement = await procurementRepository.GetByIdAsync(id);
+            var commonAccount = await accountRepository.All().FirstOrDefaultAsync();
+            commonAccount.TotalCash += (procurement.KefirPrice + procurement.OilPrice + procurement.SodaPrice
+                                                                + procurement.EggsPrice + procurement.SaltPrice + procurement.SugarPrice + procurement.VanilaPrice);
+            commonAccount.Eggs -= procurement.Eggs;
+            commonAccount.Salt = -procurement.Salt;
+            commonAccount.Soda -= procurement.Soda;
+            commonAccount.Kefir -= procurement.Kefir;
+            commonAccount.Vanila -= procurement.Vanila;
+            commonAccount.Sugar -= procurement.Sugar;
+            commonAccount.Oil -= procurement.Oil;
+
             procurementRepository.Delete(procurement);
             await procurementRepository.SaveChangesAsync();
         }

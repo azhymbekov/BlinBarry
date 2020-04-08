@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BlinBerry.Services.Common.RecipeService.Models.RecipeDto>
+
+@using BlinBerry.ViewModels;
+
+@{
+    ViewData["Title"] = "GetAllRecipes";
+}
+
+<h3 style="text-align: center">Рецепты</h3>
+<br />
+@foreach (var item in Model)
+{
+    <div id="list-example" class="list-group">
+        <a class="list-group-item list-group-item-action" href="#list-item-1">@item.Name</a>
+    </div>
+
+    <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+        <h4 id="list-item-1">Рецепт : </h4>
+        <h6>
+            Яйцо  @item.Eggs штук
+        </h6>
+        <h6>
+            Соль  @item.Salt гр
+        </h6>
+        <h6>
+            Сода  @item.Soda гр
+        </h6>
+        <h6>
+            Кефир  @item.Kefir литров
+        </h6>
+        <h6>
+            Ванильный сахар  @item.Vanila гр
+        </h6>
+        <h6>
+            Сахар  @item.Sugar кг
+        </h6>
+        <h6>
+            Масло  @item.Oil литров
+        </h6>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Изменить
+        </button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">@item.Name</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-action="">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Яйцо</label>
+                                <input type="text" class="form-control" value="@item.Eggs" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Соль</label>
+                                <input type="text" class="form-control" value="@item.Salt" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Сода</label>
+                                <input type="text" class="form-control" value="@item.Soda" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Сахар</label>
+                                <input type="text" class="form-control" value="@item.Sugar" id="recipient-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

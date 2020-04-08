@@ -32,9 +32,21 @@ namespace BlinBerry.Service.SpendingService
             return mapper.ProjectTo<SpendingDto>(spendingRepository.AllAsNoTracking().OrderByDescending(x => x.Date));
         }
 
-        public Task RemoveAsync(Guid id)
+        public async Task RemoveAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var spending = await spendingRepository.GetByIdAsync(id);
+            var commonAccount = await accountRepository.All().FirstOrDefaultAsync();
+            commonAccount.TotalCash += spending.Money;
+            commonAccount.Eggs += spending.Eggs;
+            commonAccount.Salt += spending.Salt;
+            commonAccount.Soda += spending.Soda;
+            commonAccount.Kefir += spending.Kefir;
+            commonAccount.Vanila += spending.Vanila;
+            commonAccount.Sugar += spending.Sugar;
+            commonAccount.Oil += spending.Oil;
+
+            spendingRepository.Delete(spending);
+            await spendingRepository.SaveChangesAsync();
         }
 
         public async Task<OperationResult> SaveAsync(SpendingDto model, Guid userId)

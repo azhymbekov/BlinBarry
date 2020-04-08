@@ -9,12 +9,14 @@ using BlinBerry.Service.AccountServise;
 using BlinBerry.Service.CashAndProducts;
 using BlinBerry.Service.MapperProfile;
 using BlinBerry.Service.ProcurementService;
+using BlinBerry.Service.RecipeServise;
 using BlinBerry.Service.SelesReportService;
 using BlinBerry.Service.SpendingService;
 using BlinBerry.Services.Common.AccountService;
 using BlinBerry.Services.Common.CommonInfoService;
 using BlinBerry.Services.Common.CommonInfoService.Models;
 using BlinBerry.Services.Common.ProcurementService;
+using BlinBerry.Services.Common.RecipeService;
 using BlinBerry.Services.Common.SelesReport;
 using BlinBerry.Services.Common.SpendingService;
 using Microsoft.AspNetCore.Builder;
@@ -92,6 +94,7 @@ namespace BlinBerry
             services.AddTransient<ICommonInfoAboutAccountService, CommonAccountService>();
             services.AddTransient<IProcurementService, ProcurementService>();
             services.AddTransient<ISpendingService, SpendingService>();
+            services.AddTransient<IRecipeService, RecipeService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

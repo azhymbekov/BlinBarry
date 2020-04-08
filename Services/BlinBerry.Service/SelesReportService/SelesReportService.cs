@@ -57,9 +57,23 @@ namespace BlinBerry.Service.SelesReportService
             return report;
         }
 
-        public Task RemoveAsync(Guid id)
+        public async Task RemoveAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var report = await reportRepository.GetByIdAsync(id);
+            var commonAccount = await accountRepository.All().FirstOrDefaultAsync();
+            var recipe = await recipeRepository.All().FirstOrDefaultAsync();
+            var totalProductCount = report.CountOfKg + report.DefectiveKg;
+            commonAccount.TotalCash -= report.TotalProfit;
+            commonAccount.Eggs += totalProductCount * recipe.Eggs;
+            commonAccount.Salt += totalProductCount * recipe.Salt;
+            commonAccount.Soda += totalProductCount * recipe.Soda;
+            commonAccount.Kefir += totalProductCount * recipe.Kefir;
+            commonAccount.Vanila += totalProductCount * recipe.Vanila;
+            commonAccount.Sugar += totalProductCount * recipe.Sugar;
+            commonAccount.Oil += totalProductCount * recipe.Oil;
+
+            reportRepository.Delete(report);
+            await reportRepository.SaveChangesAsync();
         }
 
         public async Task<OperationResult> SaveAsync(SeleTransactionDto model, Guid userId)

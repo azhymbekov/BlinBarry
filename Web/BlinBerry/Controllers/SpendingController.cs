@@ -56,5 +56,12 @@ namespace BlinBerry.Controllers
             return View(details);
         }
 
+
+        [Authorize]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await spendingService.RemoveAsync(id);
+            return RedirectToAction("GetAllSpendings", "Spending");
+        }
     }
 }

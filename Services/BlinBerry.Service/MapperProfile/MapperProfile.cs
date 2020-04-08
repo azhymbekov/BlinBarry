@@ -5,6 +5,7 @@ using AutoMapper;
 using BlinBerry.Data.Models.Entities;
 using BlinBerry.Services.Common.CommonInfoService.Models;
 using BlinBerry.Services.Common.ProcurementService.Models;
+using BlinBerry.Services.Common.RecipeService.Models;
 using BlinBerry.Services.Common.SpendingService.Models;
 
 namespace BlinBerry.Service.MapperProfile
@@ -26,6 +27,9 @@ namespace BlinBerry.Service.MapperProfile
 
             CreateMap<ProcurementDto, State>();
             CreateMap<State, ProcurementDto>();
+
+            CreateMap<RecipeDto, Recipe>();
+            CreateMap<Recipe, RecipeDto>();
         }
     }
 }

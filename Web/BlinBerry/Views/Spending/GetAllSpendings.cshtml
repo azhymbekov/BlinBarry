@@ -13,7 +13,7 @@
         <tr>
             <td>
                 <span style="color: blueviolet;">
-                      
+
                     @Html.DisplayFor(modelItem => item.Date)
                 </span>
 
@@ -22,13 +22,17 @@
             </td>
 
             <td>
-                @Html.ActionLink("Редактировать", "SaveData", new { Id = item.Id }) 
+                @Html.ActionLink("Редактировать", "SaveData", new { Id = item.Id })
             </td>
-            
+
             <td>
-                @Html.ActionLink("Детали", "Details", new { Id = item.Id }) 
+                @Html.ActionLink("Детали", "Details", new { Id = item.Id })
             </td>
-            
+
+            <td>
+                @Html.ActionLink("Удалить", "Delete", new { Id = item.Id })
+            </td>
+
         </tr>
     }
     </tbody>

@@ -56,6 +56,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Spending" asp-action="GetAllSpendings">Расходы</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Recipe" asp-action="GetAllRecipes">Рецепты</a>
+                            </li>
                         </ul>
                         <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout"
                               asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
