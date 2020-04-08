@@ -29,8 +29,19 @@ namespace BlinBerry.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ChangeData(RecipeDto model)
+        public async Task<IActionResult> ChangeData(double eggs, double kefir, double soda, double sugar, double vanila, double oil, double salt, string name)
         {
+            var model = new RecipeDto
+            {
+                Name = name,
+                Salt = salt,
+                Sugar = sugar,
+                Soda = soda,
+                Oil = oil,
+                Vanila = vanila,
+                Kefir = kefir,
+                Eggs = eggs
+            };
             await recipeService.SaveAsync(model);
             return RedirectToAction("GetAllRecipes", "Recipe");
         }

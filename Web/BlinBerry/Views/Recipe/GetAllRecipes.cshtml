@@ -46,39 +46,71 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">@item.Name</h5>
+                        <h5 class="modal-title">@item.Name</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form asp-action="">
+                        <form asp-action="ChangeData">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Название рецепта</label>
+                                <input type="text" class="form-control" value="@item.Name" id="name">
+                            </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Яйцо</label>
-                                <input type="text" class="form-control" value="@item.Eggs" id="recipient-name">
+                                <input type="text" class="form-control" value="@item.Eggs" id="egg">
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Соль</label>
-                                <input type="text" class="form-control" value="@item.Salt" id="recipient-name">
+                                <input type="text" class="form-control" value="@item.Salt" id="salt">
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Сода</label>
-                                <input type="text" class="form-control" value="@item.Soda" id="recipient-name">
+                                <input type="text" class="form-control" value="@item.Soda" id="soda">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Ванила</label>
+                                <input type="text" class="form-control" value="@item.Vanila" id="vanila">
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Сахар</label>
-                                <input type="text" class="form-control" value="@item.Sugar" id="recipient-name">
+                                <input type="number" class="form-control" value="@item.Sugar" id="sugar">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Масло</label>
+                                <input type="text" class="form-control" value="@item.Oil" id="oil">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Кефир</label>
+                                <input type="text" class="form-control" value="@item.Kefir" id="kefir">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button onclick="saveChanges()" class="btn btn-primary">Сохранить</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 }
+
+
+<script>
+
+    function saveChanges() {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("ChangeData", "Recipe")",
+            data: { eggs: $("#egg").val(), salt: $("#salt").val(), soda: $("#soda").val(), sugar: $("#sugar").val(), vanila: $("#vanila").val(), kefir: $("#kefir").val(), oil: $("#oil").val(), name: $("#name").val() },
+            success: function (responce) {
+                    window.location.href = '@Url.Action("GetAllRecipes", "Recipe")';
+            }
+        });
+    }
+
+</script>
 
 

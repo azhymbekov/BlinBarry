@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using AutoMapper;
 using BlinBerry.Data.Models.Entities;
@@ -25,9 +26,11 @@ namespace BlinBerry.Service.RecipeServise
             return mapper.ProjectTo<RecipeDto>(recipeRepository.AllAsNoTracking().OrderByDescending(x => x.Name));
         }
 
-        public Task SaveAsync(RecipeDto model)
+        public async Task SaveAsync(RecipeDto model)
         {
-            throw new System.NotImplementedException();
+            var recipe = await recipeRepository.GetByAsync(x => x.Name == model.Name);
+            mapper.Map(model, recipe);
+            await recipeRepository.SaveChangesAsync();
         }
     }
 }

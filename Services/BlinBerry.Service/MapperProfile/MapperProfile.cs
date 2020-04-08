@@ -28,7 +28,7 @@ namespace BlinBerry.Service.MapperProfile
             CreateMap<ProcurementDto, State>();
             CreateMap<State, ProcurementDto>();
 
-            CreateMap<RecipeDto, Recipe>();
+            CreateMap<RecipeDto, Recipe>().ForMember(dest => dest.Id, opt => opt.Ignore()); ;
             CreateMap<Recipe, RecipeDto>();
         }
     }
