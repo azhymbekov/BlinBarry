@@ -6,6 +6,7 @@ using BlinBerry.Data.Models.Entities;
 using BlinBerry.Services.Common.CommonInfoService.Models;
 using BlinBerry.Services.Common.ProcurementService.Models;
 using BlinBerry.Services.Common.RecipeService.Models;
+using BlinBerry.Services.Common.SelesReport.Models;
 using BlinBerry.Services.Common.SpendingService.Models;
 
 namespace BlinBerry.Service.MapperProfile
@@ -27,6 +28,10 @@ namespace BlinBerry.Service.MapperProfile
 
             CreateMap<ProcurementDto, State>();
             CreateMap<State, ProcurementDto>();
+
+
+            CreateMap<SeleTransaction, SeleTransactionDto>();
+            CreateMap<SeleTransactionDto, SeleTransaction>();
 
             CreateMap<RecipeDto, Recipe>().ForMember(dest => dest.Id, opt => opt.Ignore()); ;
             CreateMap<Recipe, RecipeDto>();

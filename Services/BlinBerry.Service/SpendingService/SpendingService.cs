@@ -10,6 +10,7 @@ using BlinBerry.Services.Common.SpendingService;
 using BlinBerry.Services.Common.SpendingService.Models;
 using GlobalContants;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace BlinBerry.Service.SpendingService
 {
@@ -21,11 +22,14 @@ namespace BlinBerry.Service.SpendingService
 
         private readonly IMapper mapper;
 
-        public SpendingService(IRepository<Spending> spendingRepository, IRepository<State> accountRepository, IMapper mapper)
+        private readonly ILogger<SpendingService> logger;
+
+        public SpendingService(IRepository<Spending> spendingRepository, ILogger<SpendingService> logger, IRepository<State> accountRepository, IMapper mapper)
         {
             this.spendingRepository = spendingRepository;
             this.accountRepository = accountRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
         public IQueryable<SpendingDto> GetList()
         {
@@ -96,10 +100,9 @@ namespace BlinBerry.Service.SpendingService
                 
                 await spendingRepository.SaveChangesAsync(userId);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e);
-                throw;
+                logger.LogError($"Exception: {ex.GetType()}; Сообщение об ошибке: {ex.Message}; StackTrace: {ex.StackTrace}");
             }
 
             return result;

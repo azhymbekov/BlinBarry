@@ -17,6 +17,6 @@ namespace BlinBerry.Services.Common.SelesReport
 
         Task<OperationResult> SaveAsync(SeleTransactionDto model, Guid userId);
 
-        Task<SeleTransactionDto> PrepeareWordForEditView(Guid? id);
+        Task<SeleTransactionDto> PrepareWordForEditView(Guid? id);
     }
 }

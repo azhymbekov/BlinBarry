@@ -16,7 +16,7 @@ namespace BlinBerry.Services.Common.SelesReport.Models
 
         [Required(ErrorMessage = "Укажите дату")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
-        public DateTime DayOfWeek { get; set; }
+        public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Введите количество браков")]
         public double DefectiveKg { get; set; }

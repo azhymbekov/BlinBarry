@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.Extensions.Logging;
 
 namespace BlinBerry.Service.SelesReportService
 {
@@ -20,41 +22,33 @@ namespace BlinBerry.Service.SelesReportService
 
         private readonly IRepository<Recipe> recipeRepository;
 
+        private readonly IMapper mapper;
+
+        private readonly ILogger<SelesReportService> logger;
+
         public SelesReportService(IRepository<SeleTransaction> reportRepository,
              IRepository<State> accountRepository,
-             IRepository<Recipe> recipeRepository)
+             IRepository<Recipe> recipeRepository, IMapper mapper,
+             ILogger<SelesReportService> logger)
         {
             this.reportRepository = reportRepository;
             this.accountRepository = accountRepository;
             this.recipeRepository = recipeRepository;
+            this.mapper = mapper;
+            this.logger = logger;
         }
 
         public IQueryable<SeleTransactionDto> GetReportsList()
         {
             return from r in reportRepository.All().OrderByDescending(x => x.Date)
-                   select new SeleTransactionDto
-                   {
-                       Id = r.Id,
-                       CountOfKg = r.CountOfKg ,
-                       DayOfWeek = r.Date,
-                       DefectiveKg = r.DefectiveKg,
-                       TotalProfit = r.TotalProfit
-                   };
+                   select mapper.Map<SeleTransactionDto>(r);
         }
 
-        public async Task<SeleTransactionDto> PrepeareWordForEditView(Guid? id)
+        public async Task<SeleTransactionDto> PrepareWordForEditView(Guid? id)
         {
-            var report = (from w in reportRepository.AllAsNoTracking()
-                        where w.Id == id
-                        select new SeleTransactionDto()
-                        {
-                            Id = w.Id,
-                            CountOfKg = w.CountOfKg,
-                            DayOfWeek = w.Date,
-                            DefectiveKg = w.DefectiveKg,
-                            TotalProfit = w.TotalProfit
-                        }).FirstOrDefault();
-            return report;
+            var report = await reportRepository.GetByAsync(x => x.Id == id);
+                       
+            return mapper.Map<SeleTransactionDto>(report);
         }
 
         public async Task RemoveAsync(Guid id)
@@ -97,7 +91,7 @@ namespace BlinBerry.Service.SelesReportService
                         Id = Guid.NewGuid(),
                         CountOfKg = model.CountOfKg,
                         DefectiveKg = model.DefectiveKg,
-                        Date = model.DayOfWeek,
+                        Date = model.Date,
                         TotalProfit = model.TotalProfit
                     };
 
@@ -125,7 +119,7 @@ namespace BlinBerry.Service.SelesReportService
                     currentAccount.Sugar -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Sugar; // кг
                     currentAccount.Soda -= (model.TotalKg - (report.CountOfKg + report.DefectiveKg)) * recipe.Soda; //грамм
 
-                    report.Date = model.DayOfWeek;
+                    report.Date = model.Date;
                     report.CountOfKg = model.CountOfKg;
                     report.DefectiveKg = model.DefectiveKg;
                     report.TotalProfit = model.TotalProfit;
@@ -133,10 +127,9 @@ namespace BlinBerry.Service.SelesReportService
 
                 await reportRepository.SaveChangesAsync(userId);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e);
-                throw;
+                logger.LogError($"Exception: {ex.GetType()}; Сообщение об ошибке: {ex.Message}; StackTrace: {ex.StackTrace}");
             }
            
             return result;

@@ -10,6 +10,7 @@ using BlinBerry.Services.Common.ProcurementService;
 using BlinBerry.Services.Common.ProcurementService.Models;
 using GlobalContants;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace BlinBerry.Service.ProcurementService
 {
@@ -21,11 +22,15 @@ namespace BlinBerry.Service.ProcurementService
 
         private readonly IMapper mapper;
 
-        public ProcurementService(IRepository<ProductProcurement> procurementRepository, IRepository<State> accountRepository, IMapper mapper)
+        private readonly ILogger<ProcurementService> logger;
+
+        public ProcurementService(IRepository<ProductProcurement> procurementRepository,
+            ILogger<ProcurementService> logger, IRepository<State> accountRepository, IMapper mapper)
         {
             this.procurementRepository = procurementRepository;
             this.accountRepository = accountRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         public Task<ProcurementDto> GetAsync(Guid id)
@@ -100,10 +105,9 @@ namespace BlinBerry.Service.ProcurementService
                 }
                 await procurementRepository.SaveChangesAsync(userId);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e);
-                throw;
+                logger.LogError($"Exception: {ex.GetType()}; Сообщение об ошибке: {ex.Message}; StackTrace: {ex.StackTrace}");
             }
             
             return result;
