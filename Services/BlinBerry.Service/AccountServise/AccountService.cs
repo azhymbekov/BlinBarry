@@ -1,5 +1,6 @@
 ﻿using BlinBerry.Data.Models.IdentityModels;
 using BlinBerry.Services.Common.AccountService;
+using BlinBerry.Services.Common.AccountService.Models;
 using GlobalContants;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -48,6 +49,36 @@ namespace BlinBerry.Service.AccountServise
         public async Task Logout()
         {
             await this.signInManager.SignOutAsync();
+        }
+
+        public async Task<OperationResult> Register(string userName, string password, string confirm)
+        {
+            var result = new OperationResult()
+            {
+                Succeeded = false,
+                Message = "Не удалось войти"
+            };
+
+            var chekcUser = await userManager.FindByNameAsync(userName);
+            if(chekcUser == null)
+            {
+                var newUser = new ApplicationUser
+                {
+                    UserName = userName
+                };
+                await userManager.CreateAsync(newUser, password);             
+                // установка куки
+                await signInManager.SignInAsync(newUser, false);
+                result.Succeeded = true;
+                result.Message = null;
+                return result;               
+               
+            }
+            else
+            {
+                return result;
+            }
+
         }
     }
 }

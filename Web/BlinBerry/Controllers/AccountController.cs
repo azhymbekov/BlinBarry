@@ -74,5 +74,34 @@ namespace BlinBerry.Controllers
             await this.accountService.Logout();
             return this.RedirectToAction(nameof(AccountController.Login), "Account");
         }
+
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        {
+            this.ViewData["ReturnUrl"] = returnUrl;
+            if (this.ModelState.IsValid)
+            {
+                var result = await this.accountService.Register(model.Name, model.Password, model.PasswordConfirm);
+                if (result.Succeeded)
+                {
+                    return this.RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    this.ModelState.AddModelError("LogInFailed", result.Message);
+                    return this.View(model);
+                }
+            }
+
+            return this.View(model);
+        }
+
     }
 }

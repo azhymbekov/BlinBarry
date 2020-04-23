@@ -29,7 +29,7 @@ namespace BlinBerry.Controllers
         {
             if (seleId.HasValue)
             {
-                var userModel = await selesReportService.PrepeareWordForEditView(seleId);
+                var userModel = await selesReportService.PrepareWordForEditView(seleId);
                 return this.View(userModel);
             }
             return View();

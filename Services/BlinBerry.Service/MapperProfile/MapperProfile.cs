@@ -15,26 +15,17 @@ namespace BlinBerry.Service.MapperProfile
     {
         public MapperProfile()
         {
-            CreateMap<CommonInfoDto, State>();
-            CreateMap<State, CommonInfoDto>();
+            CreateMap<CommonInfoDto, State>().ReverseMap();
 
-            CreateMap<ProcurementDto, ProductProcurement>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
-            CreateMap<ProductProcurement, ProcurementDto>();
+            CreateMap<ProcurementDto, ProductProcurement>().ReverseMap();
 
-            CreateMap<Spending, SpendingDto>();
-            CreateMap<SpendingDto, Spending>().ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<Spending, SpendingDto>().ReverseMap();
 
+            CreateMap<ProcurementDto, State>().ReverseMap();
 
-            CreateMap<ProcurementDto, State>();
-            CreateMap<State, ProcurementDto>();
+            CreateMap<SeleTransaction, SeleTransactionDto>().ReverseMap();
 
-
-            CreateMap<SeleTransaction, SeleTransactionDto>();
-            CreateMap<SeleTransactionDto, SeleTransaction>();
-
-            CreateMap<RecipeDto, Recipe>().ForMember(dest => dest.Id, opt => opt.Ignore()); ;
-            CreateMap<Recipe, RecipeDto>();
+            CreateMap<RecipeDto, Recipe>().ReverseMap();
         }
     }
 }

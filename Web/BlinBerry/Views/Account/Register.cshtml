@@ -1,0 +1,32 @@
+﻿@model BlinBerry.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 class="text-center" style="margin-top:10%">Регистрация </h1>
+
+<div class="container">
+    <form method="post" asp-controller="Account" asp-action="Register" style="max-width: 390px ;padding: 15px; margin: 0 auto;">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+
+            <label asp-for="PasswordConfirm" class="control-label"></label>
+            <input asp-for="PasswordConfirm" class="form-control" type="password" />
+            <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Войти" class="btn btn-lg btn-primary btn-block" id="button" />
+        </div>
+    </form>
+</div>

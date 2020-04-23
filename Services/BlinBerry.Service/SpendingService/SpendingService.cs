@@ -80,11 +80,6 @@ namespace BlinBerry.Service.SpendingService
                 }
                 else
                 {
-                    //var currentAccount = await accountRepository.GetByAsync(x => x.Id == spending.StateId);
-                    //var previousAccount = accountRepository.All().OrderByDescending(x => x.CreatedOn).Skip(1).First();
-                    
-                    //при каждом обновлении передается старое значение и он начинает минусовать кассу
-
                     account.TotalCash -= (model.Money - spending.Money);
                     account.Kefir -= (model.Kefir  - spending.Kefir); //литр
                     account.Oil -= (model.Oil - spending.Oil); // литр

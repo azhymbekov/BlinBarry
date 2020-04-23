@@ -84,16 +84,9 @@ namespace BlinBerry.Service.SelesReportService
             try
             {
                 if (report == null)
-                {                  
+                {
 
-                    var newReport = new SeleTransaction
-                    {
-                        Id = Guid.NewGuid(),
-                        CountOfKg = model.CountOfKg,
-                        DefectiveKg = model.DefectiveKg,
-                        Date = model.Date,
-                        TotalProfit = model.TotalProfit
-                    };
+                    var newReport = mapper.Map<SeleTransaction>(model);
 
                     currentAccount.TotalCash += model.TotalProfit;
                     currentAccount.Kefir -= model.TotalKg * recipe.Kefir;
